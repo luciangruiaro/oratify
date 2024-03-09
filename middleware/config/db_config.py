@@ -1,7 +1,7 @@
 # db_config.py
 DB_CONFIG = {
-    'host': '',
-    'user': '',
-    'password': '',
-    'database': ''
+    'host': 'teamcoding.ro',
+    'user': 'teamcodingro_oratify',
+    'password': 'Cascad0r0192831!',
+    'database': 'teamcodingro_oratify'
 }

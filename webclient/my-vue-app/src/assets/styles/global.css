@@ -1,0 +1,16 @@
+:root {
+  --background-color: #2c2d2f;
+  --primary-color: #0de7e7;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+}
+
+* {
+  touch-action: manipulation;
+}
