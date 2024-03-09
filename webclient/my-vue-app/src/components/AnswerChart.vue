@@ -116,7 +116,7 @@ const setChartOptions = () => {
 }
 
 .answer-list li {
-  background-color: #f4f4f4;
+  background-color: var(--secondary-color);
   margin: 5px 0;
   padding: 10px;
   border-radius: 5px;

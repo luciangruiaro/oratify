@@ -15,9 +15,17 @@ export const store = reactive({
     updateAnswerCount(count) {
         this.answerCount = count;
     },
+    participantsCount: 0,
+    updateParticipantsCount(count) {
+        this.participantsCount = count;
+    },
     answers: [],
     updateAnswers(data) {
         this.answers = data;
+    },
+    participants: [],
+    updateParticipants(data) {
+        this.participants = data;
     },
     userCount: 0, // Add this line for user count
     updateUserCount(count) { // Method to update user count

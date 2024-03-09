@@ -2,13 +2,9 @@
   <div class="header">
     <div class="timer">
       <!-- Input field and play button shown when isStarted is false -->
-      <InputText class="minute-input" v-if="!isStarted" v-model="initialMinutes" type="number" placeholder="Minutes"
-                 min="0"/>
-      <button v-if="!isStarted" @click="startPresentation">▶</button>
 
       <!-- Countdown shown when isStarted is true -->
       <vue-countdown
-          v-if="isStarted"
           ref="countdown"
           :key="countdownKey"
           :time="time * 1000"

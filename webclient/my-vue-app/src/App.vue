@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <router-view/>
-    <Footer @questionChanged="fetchData" />
+    <Footer @questionChanged="fetchData"/>
   </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
     async fetchData() {
       await this.fetchQuestionData();
       await this.fetchAnswers();
+      await this.fetchParticipants();
       await this.fetchUserData();
     },
     async fetchQuestionData() {
@@ -50,6 +51,17 @@ export default {
         }
       } catch (error) {
         console.error('Error fetching answer count:', error);
+      }
+    },
+    async fetchParticipants() {
+      try {
+        const questionId = 1; // This should be the ID of the question used for joining
+        const response = await axios.get(`/answers_question?presentation_id=${this.presentationId}&question_id=${questionId}`);
+        if (JSON.stringify(store.participants) !== JSON.stringify(response.data)) {
+          store.updateParticipants(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching participants:', error);
       }
     },
     async fetchUserData() {
