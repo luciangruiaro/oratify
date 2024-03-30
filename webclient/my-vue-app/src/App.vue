@@ -20,7 +20,7 @@ export default {
   mounted() {
     this.fetchData();
     this.fetchRemainingTime();
-    this.interval = setInterval(this.fetchData, 5000);
+    this.interval = setInterval(this.fetchData, 10000);
   },
   beforeDestroy() {
     clearInterval(this.interval);

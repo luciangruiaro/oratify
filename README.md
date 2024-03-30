@@ -1,2 +1,0 @@
-# oratify
-Interactive presentation app
