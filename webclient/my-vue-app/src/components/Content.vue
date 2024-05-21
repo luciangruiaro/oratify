@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {store} from '../store/store.js';
+import { store } from '../store/store.js';
 import InputText from 'primevue/inputtext';
 import Checkbox from 'primevue/checkbox';
 import Button from 'primevue/button';
@@ -25,9 +25,8 @@ import Calendar from "primevue/calendar";
 import axios from 'axios';
 import { watch } from 'vue';
 
-
 export default {
-  components: {InputText, Checkbox, Button, Calendar},
+  components: { InputText, Checkbox, Button, Calendar },
   data() {
     return {
       inputAnswer: '',
@@ -103,8 +102,11 @@ export default {
 };
 </script>
 
-
 <style scoped>
+:root {
+  --primary-color: red; /* Redefine here if necessary */
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -114,12 +116,12 @@ export default {
 }
 
 .success-message {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
   margin-top: 20px;
 }
 
-.question-title {
-  color: var(--primary-color);
+.content .question-title {
+  color: var(--primary-color) !important;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -127,6 +129,4 @@ export default {
 .submit-button {
   margin-top: 30px;
 }
-
-
 </style>

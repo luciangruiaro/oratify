@@ -6,21 +6,28 @@
 </template>
 
 <script>
-import {store} from './store/store.js'; // Adjust the path as needed
+import { store } from './store/store.js'; // Adjust the path as needed
 import axios from 'axios';
 
 export default {
-
   data() {
+    const presentationId = localStorage.getItem('presentationId');
+    const userId = localStorage.getItem('userId');
+    console.log('presentationId:', presentationId); // Log the retrieved values
+    console.log('userId:', userId);
     return {
-      presentationId: localStorage.getItem('presentationId'),
-      userId: localStorage.getItem('userId')
+      presentationId,
+      userId
     };
   },
   mounted() {
-    this.fetchData();
-    this.fetchRemainingTime();
-    this.interval = setInterval(this.fetchData, 10000);
+    if (this.presentationId) {
+      this.fetchData();
+      this.fetchRemainingTime();
+      this.interval = setInterval(this.fetchData, 1000);
+    } else {
+      console.error('Presentation ID is null');
+    }
   },
   beforeDestroy() {
     clearInterval(this.interval);
