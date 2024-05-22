@@ -3,6 +3,8 @@ package com.oratify.oratify.persistency;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oratify.oratify.config.DataSource;
 import org.apache.commons.beanutils.BeanUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
@@ -11,17 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-
-public class DbService {
+public class DbQ {
+    private static final Logger logger = LoggerFactory.getLogger(DbQ.class);
     private final DataSource dataSource;
     private final ObjectMapper objectMapper;
 
-    public DbService(DataSource dataSource, ObjectMapper objectMapper) {
+    public DbQ(DataSource dataSource, ObjectMapper objectMapper) {
         this.dataSource = dataSource;
         this.objectMapper = objectMapper;
     }
 
     public List<Object> executeQuery(String query, List<Class<?>> targetClasses) throws SQLException {
+        logger.info("Executing query: {}", query);
         List<Object> results = new ArrayList<>();
 
         try (Connection connection = DriverManager.getConnection(dataSource.getDbUrl(), dataSource.getUser(), dataSource.getPassword()); PreparedStatement stmt = connection.prepareStatement(query)) {

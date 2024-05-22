@@ -3,11 +3,11 @@ package com.oratify.oratify.model.session;
 import lombok.Data;
 
 @Data
-public class SessionAnswersQuestionResponse {
+public class SessionAnswerQuestionResponse {
     private int id;
-    private int user_id;
-    private int presentation_id;
-    private int question_id;
+    private Long user_id;
+    private Long presentation_id;
+    private Long question_id;
     private String answer;
     private String question_type;
 }
