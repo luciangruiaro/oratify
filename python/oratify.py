@@ -3,7 +3,7 @@ import os
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
-from middleware.db.db_conn import get_db_connection
+from python.middleware import get_db_connection
 
 app = Flask(__name__, static_folder='static')
 CORS(app)

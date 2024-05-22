@@ -1,7 +1,7 @@
 # db_conn.py
 import mysql.connector
 
-from middleware.config.db_config import DB_CONFIG
+from python.middleware.config.db_config import DB_CONFIG
 
 
 def get_db_connection():
