@@ -1,6 +1,6 @@
 package com.oratify.oratify.persistency;
 
-import com.oratify.oratify.model.session.SessionsUsersResponse;
+import com.oratify.oratify.model.user.SessionsUsersResponse;
 import com.oratify.oratify.model.user.UserJoinResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,11 +1,11 @@
 package com.oratify.oratify.rest;
 
-import com.oratify.oratify.model.presentation.PresentationCurrSetRequest;
-import com.oratify.oratify.model.presentation.PresentationCurrentResponse;
-import com.oratify.oratify.model.presentation.PresentationPlayRequest;
+import com.oratify.oratify.model.session.PresentationCurrSetRequest;
+import com.oratify.oratify.model.session.PresentationCurrentResponse;
+import com.oratify.oratify.model.session.PresentationPlayRequest;
 import com.oratify.oratify.model.session.PresentationRemainingTimeResponse;
 import com.oratify.oratify.persistency.DbQ;
-import com.oratify.oratify.response.SuccessResponse;
+import com.oratify.oratify.helper.SuccessResponse;
 import com.oratify.oratify.service.QuestionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

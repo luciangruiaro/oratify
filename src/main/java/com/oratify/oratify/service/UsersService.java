@@ -1,7 +1,7 @@
 package com.oratify.oratify.service;
 
 import com.oratify.oratify.inmem.UsersInMem;
-import com.oratify.oratify.model.session.SessionsUsersResponse;
+import com.oratify.oratify.model.user.SessionsUsersResponse;
 import com.oratify.oratify.model.user.UserJoinResponse;
 import com.oratify.oratify.persistency.UsersPersistent;
 import org.slf4j.Logger;

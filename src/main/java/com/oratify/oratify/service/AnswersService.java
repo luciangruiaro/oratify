@@ -1,7 +1,7 @@
 package com.oratify.oratify.service;
 
 import com.oratify.oratify.inmem.AnswersInMem;
-import com.oratify.oratify.model.session.SessionAnswerQuestionResponse;
+import com.oratify.oratify.model.answers.SessionAnswerQuestionResponse;
 import com.oratify.oratify.persistency.AnswersPersistent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,8 +48,9 @@ public class AnswersService {
     public void setSessionAnswerQuestion(int userId, int presentationId, int questionId, String answer) {
         try {
             answersPersistent.setSessionAnswerQuestion(userId, presentationId, questionId, answer);
-        } finally {
             answersPersistent.getSessionAnswersQuestion(presentationId, questionId).forEach(answersInMem::addSessionAnswerQuestionToMem);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.oratify.oratify.inmem;
 
-import com.oratify.oratify.model.session.SessionQuestionCurrResponse;
+import com.oratify.oratify.model.questions.SessionQuestionCurrResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

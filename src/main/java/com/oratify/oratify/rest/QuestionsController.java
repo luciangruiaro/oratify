@@ -1,8 +1,8 @@
 package com.oratify.oratify.rest;
 
-import com.oratify.oratify.model.session.SessionQuestionCurrResponse;
-import com.oratify.oratify.model.session.SessionQuestionCurrSetRequest;
-import com.oratify.oratify.response.SuccessResponse;
+import com.oratify.oratify.model.questions.SessionQuestionCurrResponse;
+import com.oratify.oratify.model.questions.SessionQuestionCurrSetRequest;
+import com.oratify.oratify.helper.SuccessResponse;
 import com.oratify.oratify.service.QuestionsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

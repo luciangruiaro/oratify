@@ -1,7 +1,7 @@
 package com.oratify.oratify.service;
 
 import com.oratify.oratify.inmem.QuestionsInMem;
-import com.oratify.oratify.model.session.SessionQuestionCurrResponse;
+import com.oratify.oratify.model.questions.SessionQuestionCurrResponse;
 import com.oratify.oratify.persistency.QuestionsPersistent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

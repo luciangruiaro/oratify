@@ -1,4 +1,4 @@
-package com.oratify.oratify.model.session;
+package com.oratify.oratify.model.user;
 
 import lombok.Data;
 

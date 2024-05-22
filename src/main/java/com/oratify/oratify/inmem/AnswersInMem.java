@@ -1,6 +1,6 @@
 package com.oratify.oratify.inmem;
 
-import com.oratify.oratify.model.session.SessionAnswerQuestionResponse;
+import com.oratify.oratify.model.answers.SessionAnswerQuestionResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class AnswersInMem {
                 .collect(Collectors.toList());
     }
 
-    public void addSessionAnswerQuestionToMem(SessionAnswerQuestionResponse sessionAnswerQuestionResponse) {
+    public synchronized void addSessionAnswerQuestionToMem(SessionAnswerQuestionResponse sessionAnswerQuestionResponse) {
         logger.info("addSessionAnswersQuestionToMem, sessionAnswerQuestionResponse: {}", sessionAnswerQuestionResponse);
 
         Optional<SessionAnswerQuestionResponse> existingEntry = sessionAnswerQuestionResponseList.stream()

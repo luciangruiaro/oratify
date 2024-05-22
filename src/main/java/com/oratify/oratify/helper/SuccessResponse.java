@@ -1,4 +1,4 @@
-package com.oratify.oratify.response;
+package com.oratify.oratify.helper;
 
 public class SuccessResponse {
     private boolean success;

@@ -1,4 +1,4 @@
-package com.oratify.oratify.model.presentation;
+package com.oratify.oratify.model.session;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.oratify.oratify.rest;
 
-import com.oratify.oratify.model.session.SessionsUsersResponse;
+import com.oratify.oratify.model.user.SessionsUsersResponse;
 import com.oratify.oratify.model.user.UserJoinRequest;
 import com.oratify.oratify.model.user.UserJoinResponse;
 import com.oratify.oratify.service.UsersService;
