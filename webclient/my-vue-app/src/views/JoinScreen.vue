@@ -58,6 +58,7 @@ export default {
           if (response.data.presentationId && response.data.userId) {
             localStorage.setItem('presentationId', response.data.presentationId);
             localStorage.setItem('userId', response.data.userId);
+            localStorage.setItem('redirected', 'true');
             this.router.push('/user');
           } else {
             this.errorMessage = "Invalid presentation code or user details";

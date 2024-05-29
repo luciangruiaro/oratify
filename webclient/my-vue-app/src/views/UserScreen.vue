@@ -20,6 +20,12 @@ export default {
     Header,
     Content,
     Footer
+  },
+  mounted() {
+    if (localStorage.getItem('redirected') === 'true') {
+      localStorage.removeItem('redirected');
+      window.location.reload();
+    }
   }
 };
 </script>
