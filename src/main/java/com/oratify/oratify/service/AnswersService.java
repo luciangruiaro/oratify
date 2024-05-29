@@ -3,6 +3,8 @@ package com.oratify.oratify.service;
 import com.oratify.oratify.inmem.AnswersInMem;
 import com.oratify.oratify.model.answers.SessionAnswerQuestionResponse;
 import com.oratify.oratify.persistency.AnswersPersistent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class AnswersService {
-
+    public static final String ANSWER = "answer";
+    public static final String INPUT = "input";
+    private static final Logger logger = LoggerFactory.getLogger(AnswersService.class);
     private final AnswersPersistent answersPersistent;
     private final AnswersInMem answersInMem;
     private final Map<String, Boolean> syncStatusMap = new ConcurrentHashMap<>();
@@ -45,12 +49,22 @@ public class AnswersService {
         return presentationId + "_" + questionId;
     }
 
-    public void setSessionAnswerQuestion(int userId, int presentationId, int questionId, String answer) {
+    public String setSessionAnswerQuestion(int userId, int presentationId, int questionId, String answer) {
+        String userTopic = "";
         try {
             answersPersistent.setSessionAnswerQuestion(userId, presentationId, questionId, answer);
-            answersPersistent.getSessionAnswersQuestion(presentationId, questionId).forEach(answersInMem::addSessionAnswerQuestionToMem);
+            List<SessionAnswerQuestionResponse> answers = answersPersistent.getSessionAnswersQuestion(presentationId, questionId);
+            if (!answers.isEmpty()) {
+                String target = answers.get(0).getQuestion_target();
+                String type = answers.get(0).getQuestion_type();
+                if (ANSWER.equals(target) && INPUT.equals(type)) {
+                    userTopic = answer;
+                }
+            }
+            answers.forEach(answersInMem::addSessionAnswerQuestionToMem);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return userTopic;
     }
 }

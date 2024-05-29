@@ -44,8 +44,9 @@ public class UsersService {
         UserJoinResponse userJoinResponse = new UserJoinResponse();
         try {
             userJoinResponse = usersPersistent.userJoin(presentationCode, firstName, lastName);
-        } finally {
             usersPersistent.getSessionsUsersFromPersistent(userJoinResponse.getPresentationId()).forEach(usersInMem::addSessionsUsersToMem);
+        } catch (Exception e) {
+            logger.error("Error while joining user, presentationCode: {}, firstName: {}, lastName: {}", presentationCode, firstName, lastName, e);
         }
         return userJoinResponse;
     }

@@ -4,19 +4,25 @@
 
     <!-- Display bar chart for multiple-choice questions -->
     <div v-if="isMultipleChoice" class="card">
-      <Chart type="bar" :data="chartData" :options="chartOptions" />
+      <Chart type="bar" :data="chartData" :options="chartOptions"/>
     </div>
 
     <!-- Display list of answers for input type questions with target 'answer' -->
     <div v-if="isInputTypeWithTargetAnswer" class="answer-list">
-      <ul>
-        <li v-for="answer in store.answers" :key="answer.id">
+      <div class="grid">
+        <div v-for="answer in store.answers" :key="answer.id" class="grid-item">
           {{ answer.answer }}
-        </li>
-      </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Display slide text for slide type questions -->
+    <div v-if="isSlideType" class="slide-message">
+      {{ store.currentQuestion.slideText }}
     </div>
   </div>
 </template>
+
 
 <script setup>
 import {computed, ref, watch} from "vue";
@@ -25,6 +31,7 @@ import Chart from 'primevue/chart';
 
 const isMultipleChoice = computed(() => store.currentQuestion.type === 'multiple-choice');
 const isInputTypeWithTargetAnswer = computed(() => store.currentQuestion.type === 'input' && store.currentQuestion.target === 'answer');
+const isSlideType = computed(() => store.currentQuestion.type === 'slide');
 
 const chartData = ref();
 const chartOptions = ref();
@@ -110,16 +117,29 @@ const setChartOptions = () => {
   max-width: 1200px;
 }
 
-.answer-list ul {
-  list-style: none;
-  padding: 0;
+.answer-list {
+  width: 100%;
 }
 
-.answer-list li {
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust as needed */
+  gap: 10px; /* Adjust as needed */
+}
+
+.grid-item {
   background-color: var(--secondary-color);
-  margin: 5px 0;
   padding: 10px;
   border-radius: 5px;
+  text-align: center;
+}
+
+.slide-message {
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: 20px;
+  width: 80%;
 }
 </style>
+
 

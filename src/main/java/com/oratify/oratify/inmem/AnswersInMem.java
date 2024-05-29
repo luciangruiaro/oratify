@@ -1,6 +1,7 @@
 package com.oratify.oratify.inmem;
 
 import com.oratify.oratify.model.answers.SessionAnswerQuestionResponse;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 public class AnswersInMem {
     private static final Logger logger = LoggerFactory.getLogger(AnswersInMem.class);
 
+    @Getter
     private final List<SessionAnswerQuestionResponse> sessionAnswerQuestionResponseList = new ArrayList<>();
 
     public List<SessionAnswerQuestionResponse> getSessionAnswersQuestionFromMem(int presentationId, int questionId) {

@@ -1,6 +1,7 @@
 package com.oratify.oratify.inmem;
 
 import com.oratify.oratify.model.questions.SessionQuestionCurrResponse;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ public class QuestionsInMem {
 
     private static final Logger logger = LoggerFactory.getLogger(QuestionsInMem.class);
 
+    @Getter
     private final List<SessionQuestionCurrResponse> sessionQuestionCurrResponseList = new ArrayList<>();
 
     public SessionQuestionCurrResponse getSessionCurrentQuestionFromMem(int presentationId) {

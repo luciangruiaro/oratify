@@ -36,7 +36,7 @@ public class UsersPersistent {
         return results.stream().filter(SessionsUsersResponse.class::isInstance).map(SessionsUsersResponse.class::cast).collect(Collectors.toList());
     }
 
-    public UserJoinResponse userJoin(String presentationCode, String firstName, String lastName) {
+    public synchronized UserJoinResponse userJoin(String presentationCode, String firstName, String lastName) {
         String query = String.format(CALL_USER_JOIN_S_S_S, presentationCode, firstName, lastName);
         List<Class<?>> targetClasses = List.of(UserJoinResponse.class);
         List<Object> results = new ArrayList<>();

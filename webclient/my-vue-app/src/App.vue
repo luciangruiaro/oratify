@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { store } from './store/store.js'; // Adjust the path as needed
+import {store} from './store/store.js'; // Adjust the path as needed
 import axios from 'axios';
 
 export default {
@@ -24,7 +24,7 @@ export default {
     if (this.presentationId) {
       this.fetchData();
       this.fetchRemainingTime();
-      this.interval = setInterval(this.fetchData, 1000);
+      this.interval = setInterval(this.fetchData, 3000);
     } else {
       console.error('Presentation ID is null');
     }
@@ -75,6 +75,7 @@ export default {
       try {
         const response = await axios.get(`/sessions_users?presentation_id=${this.presentationId}`);
         store.updateUserCount(response.data.length); // Update the user count
+        // store.updateParticipants(response.data); // Update the participants (if needed
       } catch (error) {
         console.error('Error fetching user data:', error);
       }

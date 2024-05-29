@@ -9,24 +9,36 @@
     </div>
     <Calendar v-else-if="store.currentQuestion.target === 'user:birth_date'" v-model="calendarAnswer"/>
     <InputText v-else-if="store.currentQuestion.target === 'user:email'" v-model="inputAnswer" type="email"/>
-    <InputText v-else-if="store.currentQuestion.type === 'input'" v-model="inputAnswer"/>
-    <Button v-if="!submitted && store.currentQuestion.type !== 'title'" class="submit-button" label="Submit"
+    <div v-else-if="store.currentQuestion.type === 'input' && store.currentQuestion.target === 'answer'">
+      <div v-if="!submitted">
+        <InputText v-model="inputAnswer" maxlength="200" class="wide-input"/>
+        <p class="char-counter">{{ remainingChars }} characters remaining</p>
+      </div>
+    </div>
+    <div v-else-if="store.currentQuestion.type === 'slide'">
+      <p class="slide-message">Content is being shared on the speaker's screen.</p>
+    </div>
+    <Button v-if="!submitted && store.currentQuestion.type !== 'title' && store.currentQuestion.type !== 'slide' && store.currentQuestion.target !== 'join'"
+            class="submit-button" label="Submit"
             @click="submitAnswer"/>
     <p v-if="submitted" class="success-message">Answer submitted successfully!</p>
+    <p v-if="submitted && generation && store.currentQuestion.type === 'input' && store.currentQuestion.target === 'answer'"
+       class="generation-message">{{ generation }}</p>
   </div>
 </template>
 
+
 <script>
-import { store } from '../store/store.js';
+import {store} from '../store/store.js';
 import InputText from 'primevue/inputtext';
 import Checkbox from 'primevue/checkbox';
 import Button from 'primevue/button';
 import Calendar from "primevue/calendar";
 import axios from 'axios';
-import { watch } from 'vue';
+import {watch} from 'vue';
 
 export default {
-  components: { InputText, Checkbox, Button, Calendar },
+  components: {InputText, Checkbox, Button, Calendar},
   data() {
     return {
       inputAnswer: '',
@@ -34,7 +46,8 @@ export default {
       checkboxAnswers: [],
       submitted: false,
       presentationId: localStorage.getItem('presentationId'),
-      userId: localStorage.getItem('userId')
+      userId: localStorage.getItem('userId'),
+      generation: null  // Added state for generation
     };
   },
   mounted() {
@@ -53,6 +66,9 @@ export default {
       const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return regex.test(this.inputAnswer);
     },
+    remainingChars() {
+      return 200 - this.inputAnswer.length;
+    }
   },
   methods: {
     resetForm() {
@@ -60,6 +76,7 @@ export default {
       this.inputAnswer = '';
       this.calendarAnswer = '';
       this.checkboxAnswers = [];
+      this.generation = null;  // Reset generation field
     },
     async submitAnswer() {
       if (this.store.currentQuestion.target === 'user:email' && !this.isEmailValid) {
@@ -68,13 +85,14 @@ export default {
       }
       const answer = this.determineAnswer();
       try {
-        await axios.post('/answer', {
+        const response = await axios.post('/answer', {
           user_id: this.userId, // Replace with actual user ID
           presentation_id: this.presentationId,
           question_id: this.store.currentQuestion.id,
           answer: answer
         });
         this.submitted = true;
+        this.generation = response.data.generation || null;  // Set generation field
       } catch (error) {
         console.error('Error submitting answer:', error);
       }
@@ -102,10 +120,8 @@ export default {
 };
 </script>
 
+
 <style scoped>
-:root {
-  --primary-color: red; /* Redefine here if necessary */
-}
 
 .content {
   display: flex;
@@ -120,6 +136,19 @@ export default {
   margin-top: 20px;
 }
 
+.generation-message { /* New style for generation message */
+  color: var(--primary-color);
+  margin-top: 10px;
+  width: 80%;
+}
+
+.slide-message { /* New style for slide message */
+  color: #595959;
+  margin-top: 20px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
 .content .question-title {
   color: var(--primary-color) !important;
   text-align: center;
@@ -129,4 +158,17 @@ export default {
 .submit-button {
   margin-top: 30px;
 }
+
+.char-counter {
+  color: #6450ff;
+  margin-top: 5px;
+  font-size: 0.9em;
+}
+
+.wide-input {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 10px;
+}
 </style>
+

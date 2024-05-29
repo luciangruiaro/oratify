@@ -12,4 +12,5 @@ public class SessionQuestionCurrResponse {
     private String type;
     private String options;
     private String target;
+    private String slideText;
 }

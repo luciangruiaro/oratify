@@ -1,6 +1,6 @@
 <template>
   <div class="join-screen">
-    <h1>Hello, let's do this!</h1>
+    <h1>Hello, nice to meet you!</h1>
     <InputText v-model="presentationCode" placeholder="Join with code" maxlength="8" class="code"/>
     <div v-if="presentationCode.length >= 4">
       <div>

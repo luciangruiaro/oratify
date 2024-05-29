@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LlmRestTest {
-    private final Wrapper wrapper;
+    private final CB cb;
 
     @Autowired
-    public LlmRestTest(Wrapper wrapper) {
-        this.wrapper = wrapper;
+    public LlmRestTest(CB cb) {
+        this.cb = cb;
     }
 
     @GetMapping("/llm/prompt")
     public ResponseEntity generate() {
-        return ResponseEntity.ok(wrapper.generatePromptResponse("Tell me something about Romania. Limit your response to 100 tokens"));
+        return ResponseEntity.ok(cb.generate("Tell me something about Gdansk. Limit your response to 100 tokens"));
     }
 }

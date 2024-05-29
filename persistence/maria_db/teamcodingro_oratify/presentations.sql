@@ -5,6 +5,8 @@ create table presentations
     name       varchar(128) null,
     code       varchar(8)   null,
     start_time datetime     null,
-    end_time   datetime     null
+    end_time   datetime     null,
+    playTime   datetime     null,
+    duration   int          null comment 'seonds'
 );
 

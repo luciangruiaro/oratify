@@ -10,4 +10,5 @@ public class SessionAnswerQuestionResponse {
     private Long question_id;
     private String answer;
     private String question_type;
+    private String question_target;
 }
