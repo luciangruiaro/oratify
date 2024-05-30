@@ -16,6 +16,6 @@ public class LlmRestTest {
 
     @GetMapping("/llm/prompt")
     public ResponseEntity generate() {
-        return ResponseEntity.ok(cb.generate("Tell me something about Gdansk. Limit your response to 100 tokens"));
+        return ResponseEntity.ok(cb.generate("Tell me something about Romania. Limit your response to 100 tokens"));
     }
 }
