@@ -1,0 +1,53 @@
+# Pre-commit hooks configuration
+#
+# Install: pre-commit install
+# Run all: pre-commit run --all-files
+# Update:  pre-commit autoupdate
+
+repos:
+  # General hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+      - id: check-merge-conflict
+
+  # Python - Black formatter
+  - repo: https://github.com/psf/black
+    rev: 24.1.1
+    hooks:
+      - id: black
+        files: ^app/backend/
+
+  # Python - Ruff linter
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.14
+    hooks:
+      - id: ruff
+        files: ^app/backend/
+        args: [--fix]
+
+  # JavaScript/TypeScript - ESLint
+  - repo: local
+    hooks:
+      - id: eslint
+        name: eslint
+        entry: bash -c 'cd app/frontend && npm run lint'
+        language: system
+        files: ^app/frontend/.*\.(ts|tsx)$
+        pass_filenames: false
+
+  # JavaScript/TypeScript - Prettier
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: bash -c 'cd app/frontend && npm run format:check'
+        language: system
+        files: ^app/frontend/.*\.(ts|tsx|css|json)$
+        pass_filenames: false

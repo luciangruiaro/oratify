@@ -1,0 +1,33 @@
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#0de7e7', 'primaryTextColor': '#eeeeee', 'primaryBorderColor': '#2c2d2f', 'lineColor': '#0de7e7', 'secondaryColor': '#c73a52', 'tertiaryColor': '#2c2d2f'}}}%%
+
+flowchart TB
+    subgraph App["Application"]
+        Router["React Router"]
+        Redux["Redux Toolkit"]
+    end
+
+    subgraph Pages["Pages"]
+        Auth["Auth Pages"]
+        Speaker["Speaker Pages"]
+        Audience["Audience Pages"]
+        Admin["Admin Pages"]
+    end
+
+    subgraph Features["Features"]
+        AuthFeature["auth/"]
+        ComposerFeature["composer/"]
+        PresenterFeature["presenter/"]
+        AudienceFeature["audience/"]
+    end
+
+    subgraph Services["Services"]
+        APIClient["API Client"]
+        WSClient["WebSocket Client"]
+    end
+
+    Router --> Pages
+    Pages --> Features
+    Features --> Redux
+    Redux --> Services
+    Services -->|HTTP| Backend["Backend API"]
+    Services -->|WS| WebSocket["WebSocket Server"]

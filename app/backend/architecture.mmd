@@ -1,0 +1,47 @@
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#0de7e7', 'primaryTextColor': '#eeeeee', 'primaryBorderColor': '#2c2d2f', 'lineColor': '#0de7e7', 'secondaryColor': '#c73a52', 'tertiaryColor': '#2c2d2f'}}}%%
+
+flowchart TB
+    subgraph API["API Layer"]
+        direction LR
+        AuthRoutes["/api/auth/*"]
+        PresentationRoutes["/api/presentations/*"]
+        SessionRoutes["/api/sessions/*"]
+        WSEndpoint["/ws/{session_id}"]
+    end
+
+    subgraph Services["Service Layer"]
+        AuthService["Auth Service"]
+        PresentationService["Presentation Service"]
+        SessionService["Session Service"]
+        LLMService["LLM Service"]
+        WSManager["WebSocket Manager"]
+    end
+
+    subgraph Core["Core Layer"]
+        Models["SQLAlchemy Models"]
+        Schemas["Pydantic Schemas"]
+        Security["Security Utils"]
+    end
+
+    subgraph External["External"]
+        DB[(PostgreSQL)]
+        OpenAI["OpenAI/Ollama"]
+    end
+
+    API --> Services
+    Services --> Core
+    Core --> DB
+    LLMService --> OpenAI
+
+---
+title: Data Models
+---
+
+erDiagram
+    Speaker ||--o{ Presentation : creates
+    Presentation ||--o{ Slide : contains
+    Presentation ||--o{ Session : has
+    Session ||--o{ Participant : has
+    Session ||--o{ Response : collects
+    Slide ||--o{ Response : receives
+    Participant ||--o{ Response : submits

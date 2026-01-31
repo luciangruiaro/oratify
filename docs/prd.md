@@ -182,7 +182,7 @@ Traditional presentations suffer from:
 ### 6.6 AI Integration
 
 **LLM Provider Support:**
-- Primary: OpenAI API (GPT-4o, GPT-4o-mini)
+- Primary: OpenAI API (GPT-4o-mini)
 - Secondary: Local models via Ollama/LMStudio
 - Abstraction: LiteLLM or OpenRouter for provider switching
 
