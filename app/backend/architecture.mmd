@@ -2,68 +2,60 @@
 
 flowchart TB
     subgraph Entry["Entry Point"]
-        Main["main.py\nFastAPI App"]
+        Main["main.py\nFastAPI App\nLifespan Events"]
     end
 
     subgraph API["API Layer - app/api/"]
-        AuthRoutes["auth.py\n/api/auth"]
-        PresentationRoutes["presentations.py\n/api/presentations"]
-        SlideRoutes["slides.py\n/api/slides"]
-        SessionRoutes["sessions.py\n/api/sessions"]
-        ResponseRoutes["responses.py\n/api/responses"]
-        AdminRoutes["admin.py\n/api/admin"]
-        WSEndpoint["websocket.py\n/ws/session_id"]
-    end
-
-    subgraph Middleware["Middleware"]
-        CORS["CORS Middleware"]
-        AuthMW["JWT Auth Middleware"]
-        ErrorMW["Error Handler"]
+        AuthRoutes["auth.py"]
+        PresentationRoutes["presentations.py"]
+        SlideRoutes["slides.py"]
+        SessionRoutes["sessions.py"]
+        ResponseRoutes["responses.py"]
+        AdminRoutes["admin.py"]
+        WSEndpoint["websocket.py"]
     end
 
     subgraph Core["Core Layer - app/core/"]
         Config["config.py\nPydantic Settings"]
-        Security["security.py\nJWT + Password"]
-        Database["database.py\nAsync SQLAlchemy"]
+        Security["security.py\nJWT + Bcrypt"]
+        Database["database.py\nAsyncSession\nConnection Pool"]
     end
 
-    subgraph Services["Service Layer - app/services/"]
+    subgraph Models["Models - app/models/"]
+        BaseModel["base.py\nTimestampMixin\nUUIDMixin"]
+        SpeakerModel["speaker.py"]
+        PresentationModel["presentation.py"]
+        SlideModel["slide.py\nJSONB content"]
+        SessionModel["session.py"]
+        ParticipantModel["participant.py"]
+        ResponseModel["response.py"]
+    end
+
+    subgraph Services["Services - app/services/"]
         AuthService["auth.py"]
         PresentationService["presentation.py"]
         SessionService["session.py"]
-        LLMService["llm.py\nLiteLLM"]
-        WSManager["websocket.py\nConnection Manager"]
+        LLMService["llm.py"]
+        WSManager["websocket.py"]
     end
 
-    subgraph Models["Model Layer - app/models/"]
-        Speaker["speaker.py"]
-        Presentation["presentation.py"]
-        Slide["slide.py"]
-        Session["session.py"]
-        Participant["participant.py"]
-        Response["response.py"]
-    end
-
-    subgraph Schemas["Schema Layer - app/schemas/"]
-        AuthSchemas["auth.py"]
-        PresentationSchemas["presentation.py"]
-        SlideSchemas["slide.py"]
-        SessionSchemas["session.py"]
+    subgraph Migrations["Alembic - alembic/"]
+        AlembicEnv["env.py\nAsync Support"]
+        Versions["versions/\n001_initial"]
     end
 
     subgraph External["External"]
-        Postgres[(PostgreSQL)]
+        Postgres[(PostgreSQL 15)]
         OpenAI["OpenAI API"]
         Ollama["Ollama"]
     end
 
-    Main --> Middleware
-    Middleware --> API
+    Main --> API
+    Main --> Core
     API --> Services
     Services --> Models
-    Services --> Schemas
     Models --> Database
     Database --> Postgres
     LLMService --> OpenAI
     LLMService --> Ollama
-    API --> Core
+    Migrations --> Models

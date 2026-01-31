@@ -6,14 +6,14 @@
 
 | Phase | Status | Progress | Completed | Total |
 |-------|--------|----------|-----------|-------|
-| Phase 1: Foundation | In Progress | 30% | 12 | 40 |
+| Phase 1: Foundation | In Progress | 55% | 22 | 40 |
 | Phase 2: Core Domain | Not Started | 0% | 0 | 43 |
 | Phase 3: Live Features | Not Started | 0% | 0 | 82 |
 | Phase 4: Intelligence | Not Started | 0% | 0 | 30 |
 | Phase 5: Management | Not Started | 0% | 0 | 27 |
 | Phase 6: Quality | Not Started | 0% | 0 | 44 |
 | Phase 7: Release | Not Started | 0% | 0 | 25 |
-| **Grand Total** | **In Progress** | **4%** | **12** | **281** |
+| **Grand Total** | **In Progress** | **8%** | **22** | **281** |
 
 ---
 
@@ -39,17 +39,17 @@
 ### Epic 2: Database Schema & ORM
 | ID | Story | Status | Estimate (h) |
 |----|-------|--------|--------------|
-| 2.1 | Configure SQLAlchemy with async support | Pending | 3 |
-| 2.2 | Set up Alembic for migrations | Pending | 2 |
-| 2.3 | Create Speaker model | Pending | 2 |
-| 2.4 | Create Presentation model | Pending | 2 |
-| 2.5 | Create Slide model with JSONB content | Pending | 3 |
-| 2.6 | Create Session model | Pending | 2 |
-| 2.7 | Create Participant model | Pending | 2 |
-| 2.8 | Create Response model | Pending | 2 |
-| 2.9 | Create initial migration | Pending | 1 |
-| 2.10 | Create seed data script for development | Pending | 2 |
-| | **Epic 2 Total** | | **21** |
+| 2.1 | Configure SQLAlchemy with async support | Done | 3 |
+| 2.2 | Set up Alembic for migrations | Done | 2 |
+| 2.3 | Create Speaker model | Done | 2 |
+| 2.4 | Create Presentation model | Done | 2 |
+| 2.5 | Create Slide model with JSONB content | Done | 3 |
+| 2.6 | Create Session model | Done | 2 |
+| 2.7 | Create Participant model | Done | 2 |
+| 2.8 | Create Response model | Done | 2 |
+| 2.9 | Create initial migration | Done | 1 |
+| 2.10 | Create seed data script for development | Done | 2 |
+| | **Epic 2 Total** | **Done** | **21** |
 
 ### Epic 3: Speaker Authentication
 | ID | Story | Status | Estimate (h) |
@@ -475,6 +475,7 @@
 | Date | Epic | Story | Description |
 |------|------|-------|-------------|
 | 2026-01-31 | 1 | 1.1-1.12 | Epic 1: Project Setup & Infrastructure - Complete |
+| 2026-01-31 | 2 | 2.1-2.10 | Epic 2: Database Schema & ORM - Complete |
 
 ---
 
@@ -482,7 +483,7 @@
 
 | Epic | Story | Description |
 |------|-------|-------------|
-| 2 | - | Database Schema & ORM (Next)
+| 3 | - | Speaker Authentication (Next)
 
 ---
 
@@ -503,3 +504,4 @@ _No blocked items._
 | 2026-01-31 | Folder structure: app/backend, app/frontend (not at root) |
 | 2026-01-31 | Epic 1 complete - all infrastructure files created |
 | 2026-01-31 | Updated all README.md and architecture.mmd files |
+| 2026-01-31 | Epic 2 complete - all models and migrations created |

@@ -21,10 +21,9 @@ backend/
 ├── app/
 │   ├── __init__.py
 │   ├── main.py              # FastAPI application entry point
-│   │                        # - Creates app instance
-│   │                        # - Configures CORS middleware
-│   │                        # - Mounts API routers
-│   │                        # - Defines /health endpoint
+│   │                        # - Lifespan events (startup/shutdown)
+│   │                        # - CORS middleware configured
+│   │                        # - Health check with DB status
 │   │
 │   ├── api/                 # API route handlers
 │   │   ├── __init__.py
@@ -88,8 +87,73 @@ backend/
 ├── requirements.txt         # Production dependencies
 ├── requirements-dev.txt     # Development dependencies
 ├── pyproject.toml           # Python project config (Black, Ruff, Pytest)
+├── alembic.ini              # Alembic configuration
 ├── architecture.mmd         # Backend architecture diagram
 └── README.md
+```
+
+## Data Models
+
+All models use UUID primary keys and include `created_at`/`updated_at` timestamps.
+
+```
+Speaker (speakers)
+├── id: UUID (PK)
+├── email: String (unique, indexed)
+├── password_hash: String
+├── name: String
+├── plan_type: String (free/pro/enterprise)
+├── is_active: Boolean
+└── presentations: Relationship → Presentation[]
+
+Presentation (presentations)
+├── id: UUID (PK)
+├── speaker_id: UUID (FK → speakers)
+├── title: String
+├── description: Text
+├── slug: String (unique, indexed)
+├── speaker_notes: Text (for AI context)
+├── status: String (draft/active/ended)
+├── slides: Relationship → Slide[]
+└── sessions: Relationship → Session[]
+
+Slide (slides)
+├── id: UUID (PK)
+├── presentation_id: UUID (FK → presentations)
+├── order_index: Integer
+├── type: String (content/question_text/question_choice/summary/conclusion)
+├── content: JSONB (type-specific schema)
+└── responses: Relationship → Response[]
+
+Session (sessions)
+├── id: UUID (PK)
+├── presentation_id: UUID (FK → presentations)
+├── join_code: String(6) (unique, indexed)
+├── current_slide_id: UUID (FK → slides, nullable)
+├── status: String (pending/active/paused/ended)
+├── started_at: DateTime
+├── ended_at: DateTime
+├── participants: Relationship → Participant[]
+└── responses: Relationship → Response[]
+
+Participant (participants)
+├── id: UUID (PK)
+├── session_id: UUID (FK → sessions)
+├── display_name: String (nullable)
+├── connection_id: String
+├── is_anonymous: Boolean
+├── joined_at: DateTime
+├── left_at: DateTime
+└── responses: Relationship → Response[]
+
+Response (responses)
+├── id: UUID (PK)
+├── session_id: UUID (FK → sessions)
+├── slide_id: UUID (FK → slides)
+├── participant_id: UUID (FK → participants, nullable)
+├── content: JSONB
+├── is_ai_response: Boolean
+└── created_at: DateTime
 ```
 
 ## API Endpoints
