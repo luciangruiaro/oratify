@@ -1,33 +1,60 @@
 %%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#0de7e7', 'primaryTextColor': '#eeeeee', 'primaryBorderColor': '#2c2d2f', 'lineColor': '#0de7e7', 'secondaryColor': '#c73a52', 'tertiaryColor': '#2c2d2f'}}}%%
 
 flowchart TB
-    subgraph App["Application"]
-        Router["React Router"]
-        Redux["Redux Toolkit"]
+    subgraph Entry["Entry Point"]
+        Index["index.html"]
+        Main["main.tsx\nRedux Provider"]
+        App["App.tsx\nRouter"]
     end
 
-    subgraph Pages["Pages"]
-        Auth["Auth Pages"]
-        Speaker["Speaker Pages"]
-        Audience["Audience Pages"]
-        Admin["Admin Pages"]
+    subgraph Routing["React Router"]
+        PublicRoutes["Public Routes\n/join /login /register"]
+        SpeakerRoutes["Speaker Routes\n/dashboard /presentations"]
+        AudienceRoutes["Audience Routes\n/session"]
+        AdminRoutes["Admin Routes\n/admin"]
     end
 
-    subgraph Features["Features"]
-        AuthFeature["auth/"]
-        ComposerFeature["composer/"]
-        PresenterFeature["presenter/"]
-        AudienceFeature["audience/"]
+    subgraph Pages["Pages - src/pages/"]
+        JoinPage["JoinPage"]
+        LoginPage["LoginPage"]
+        RegisterPage["RegisterPage"]
+        DashboardPage["DashboardPage"]
+        ComposerPage["ComposerPage"]
+        PresenterPage["PresenterPage"]
+        AudienceViewPage["AudienceViewPage"]
+        AdminDashboard["AdminDashboard"]
     end
 
-    subgraph Services["Services"]
-        APIClient["API Client"]
-        WSClient["WebSocket Client"]
+    subgraph State["Redux Store - src/store/"]
+        AuthSlice["authSlice"]
+        PresentationsSlice["presentationsSlice"]
+        SlidesSlice["slidesSlice"]
+        SessionSlice["sessionSlice"]
+        UISlice["uiSlice"]
     end
 
-    Router --> Pages
-    Pages --> Features
-    Features --> Redux
-    Redux --> Services
-    Services -->|HTTP| Backend["Backend API"]
-    Services -->|WS| WebSocket["WebSocket Server"]
+    subgraph Services["API Layer - src/api/"]
+        Client["client.ts\nAxios Instance"]
+        WSClient["websocket.ts\nWebSocket Client"]
+    end
+
+    subgraph External["External"]
+        Backend["Backend API"]
+        WebSocket["WebSocket Server"]
+    end
+
+    Index --> Main
+    Main --> App
+    App --> Routing
+    Routing --> PublicRoutes
+    Routing --> SpeakerRoutes
+    Routing --> AudienceRoutes
+    Routing --> AdminRoutes
+    PublicRoutes --> Pages
+    SpeakerRoutes --> Pages
+    AudienceRoutes --> Pages
+    AdminRoutes --> Pages
+    Pages --> State
+    State --> Services
+    Client -->|HTTP| Backend
+    WSClient <-->|WS| WebSocket

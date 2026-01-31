@@ -501,3 +501,5 @@ _No blocked items._
 | 2026-01-31 | LLM: OpenAI primary (GPT-4o-mini), Ollama secondary, via LiteLLM |
 | 2026-01-31 | Target: ~100 concurrent users per session |
 | 2026-01-31 | Folder structure: app/backend, app/frontend (not at root) |
+| 2026-01-31 | Epic 1 complete - all infrastructure files created |
+| 2026-01-31 | Updated all README.md and architecture.mmd files |

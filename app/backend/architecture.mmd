@@ -1,47 +1,69 @@
 %%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#0de7e7', 'primaryTextColor': '#eeeeee', 'primaryBorderColor': '#2c2d2f', 'lineColor': '#0de7e7', 'secondaryColor': '#c73a52', 'tertiaryColor': '#2c2d2f'}}}%%
 
 flowchart TB
-    subgraph API["API Layer"]
-        direction LR
-        AuthRoutes["/api/auth/*"]
-        PresentationRoutes["/api/presentations/*"]
-        SessionRoutes["/api/sessions/*"]
-        WSEndpoint["/ws/{session_id}"]
+    subgraph Entry["Entry Point"]
+        Main["main.py\nFastAPI App"]
     end
 
-    subgraph Services["Service Layer"]
-        AuthService["Auth Service"]
-        PresentationService["Presentation Service"]
-        SessionService["Session Service"]
-        LLMService["LLM Service"]
-        WSManager["WebSocket Manager"]
+    subgraph API["API Layer - app/api/"]
+        AuthRoutes["auth.py\n/api/auth"]
+        PresentationRoutes["presentations.py\n/api/presentations"]
+        SlideRoutes["slides.py\n/api/slides"]
+        SessionRoutes["sessions.py\n/api/sessions"]
+        ResponseRoutes["responses.py\n/api/responses"]
+        AdminRoutes["admin.py\n/api/admin"]
+        WSEndpoint["websocket.py\n/ws/session_id"]
     end
 
-    subgraph Core["Core Layer"]
-        Models["SQLAlchemy Models"]
-        Schemas["Pydantic Schemas"]
-        Security["Security Utils"]
+    subgraph Middleware["Middleware"]
+        CORS["CORS Middleware"]
+        AuthMW["JWT Auth Middleware"]
+        ErrorMW["Error Handler"]
+    end
+
+    subgraph Core["Core Layer - app/core/"]
+        Config["config.py\nPydantic Settings"]
+        Security["security.py\nJWT + Password"]
+        Database["database.py\nAsync SQLAlchemy"]
+    end
+
+    subgraph Services["Service Layer - app/services/"]
+        AuthService["auth.py"]
+        PresentationService["presentation.py"]
+        SessionService["session.py"]
+        LLMService["llm.py\nLiteLLM"]
+        WSManager["websocket.py\nConnection Manager"]
+    end
+
+    subgraph Models["Model Layer - app/models/"]
+        Speaker["speaker.py"]
+        Presentation["presentation.py"]
+        Slide["slide.py"]
+        Session["session.py"]
+        Participant["participant.py"]
+        Response["response.py"]
+    end
+
+    subgraph Schemas["Schema Layer - app/schemas/"]
+        AuthSchemas["auth.py"]
+        PresentationSchemas["presentation.py"]
+        SlideSchemas["slide.py"]
+        SessionSchemas["session.py"]
     end
 
     subgraph External["External"]
-        DB[(PostgreSQL)]
-        OpenAI["OpenAI/Ollama"]
+        Postgres[(PostgreSQL)]
+        OpenAI["OpenAI API"]
+        Ollama["Ollama"]
     end
 
+    Main --> Middleware
+    Middleware --> API
     API --> Services
-    Services --> Core
-    Core --> DB
+    Services --> Models
+    Services --> Schemas
+    Models --> Database
+    Database --> Postgres
     LLMService --> OpenAI
-
----
-title: Data Models
----
-
-erDiagram
-    Speaker ||--o{ Presentation : creates
-    Presentation ||--o{ Slide : contains
-    Presentation ||--o{ Session : has
-    Session ||--o{ Participant : has
-    Session ||--o{ Response : collects
-    Slide ||--o{ Response : receives
-    Participant ||--o{ Response : submits
+    LLMService --> Ollama
+    API --> Core

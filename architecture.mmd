@@ -1,64 +1,58 @@
 %%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#0de7e7', 'primaryTextColor': '#eeeeee', 'primaryBorderColor': '#2c2d2f', 'lineColor': '#0de7e7', 'secondaryColor': '#c73a52', 'tertiaryColor': '#2c2d2f'}}}%%
 
 flowchart TB
-    subgraph Clients["Client Layer"]
-        AudienceWeb["Audience View<br/>(Mobile PWA)"]
-        PresenterWeb["Presenter View<br/>(Desktop)"]
-        ComposerWeb["Composer<br/>(Desktop)"]
-        AdminWeb["Admin Dashboard<br/>(Desktop)"]
+    subgraph Clients["Client Applications"]
+        AudienceWeb["Audience View\n(Mobile PWA)"]
+        PresenterWeb["Presenter View\n(Desktop)"]
+        ComposerWeb["Composer\n(Desktop)"]
+        AdminWeb["Admin Dashboard\n(Desktop)"]
     end
 
-    subgraph Frontend["Frontend (React + Vite)"]
-        Router["React Router"]
-        Redux["Redux Toolkit<br/>State Management"]
+    subgraph Frontend["Frontend Layer - React + Vite"]
+        Router["React Router v6"]
+        Redux["Redux Toolkit\nState Management"]
         WSClient["WebSocket Client"]
-        APIClient["REST API Client<br/>(Axios)"]
+        APIClient["REST API Client\nAxios"]
     end
 
-    subgraph Backend["Backend (FastAPI + Python)"]
-        RestAPI["REST API<br/>Endpoints"]
-        WSServer["WebSocket<br/>Manager"]
-        AuthService["Auth Service<br/>(JWT)"]
-        SessionMgr["Session<br/>Manager"]
-        LLMService["LLM Service<br/>(LiteLLM)"]
+    subgraph Backend["Backend Layer - FastAPI + Python"]
+        RestAPI["REST API\nEndpoints"]
+        WSServer["WebSocket\nManager"]
+        AuthService["Auth Service\nJWT"]
+        SessionMgr["Session\nManager"]
+        LLMService["LLM Service\nLiteLLM"]
     end
 
     subgraph Data["Data Layer"]
-        Postgres[(PostgreSQL<br/>Database)]
-        Cache["In-Memory Cache<br/>(Python Dict)"]
+        Postgres[(PostgreSQL 15\nDatabase)]
+        Cache["In-Memory Cache\nPython Dict"]
     end
 
     subgraph External["External Services"]
-        OpenAI["OpenAI API"]
-        Ollama["Ollama<br/>(Local LLM)"]
+        OpenAI["OpenAI API\nGPT-4o-mini"]
+        Ollama["Ollama\nLocal LLM"]
     end
 
-    %% Client to Frontend
     AudienceWeb --> Router
     PresenterWeb --> Router
     ComposerWeb --> Router
     AdminWeb --> Router
 
-    %% Frontend internal
     Router --> Redux
     Redux --> APIClient
     Redux --> WSClient
 
-    %% Frontend to Backend
     APIClient -->|HTTP/REST| RestAPI
     WSClient <-->|WebSocket| WSServer
 
-    %% Backend internal
     RestAPI --> AuthService
     RestAPI --> SessionMgr
     WSServer --> SessionMgr
     SessionMgr --> LLMService
 
-    %% Backend to Data
     RestAPI --> Postgres
     SessionMgr --> Cache
     WSServer --> Cache
 
-    %% Backend to External
     LLMService --> OpenAI
     LLMService --> Ollama
