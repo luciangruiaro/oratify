@@ -221,3 +221,23 @@ async def test_slides(client: AsyncClient, auth_headers: dict, test_presentation
         slides.append(slide)
 
     return slides
+
+
+@pytest_asyncio.fixture
+async def test_session(client: AsyncClient, auth_headers: dict, test_presentation):
+    """Create a test session via API."""
+    response = await client.post(
+        "/api/sessions",
+        headers=auth_headers,
+        json={"presentation_id": str(test_presentation.id)},
+    )
+    assert response.status_code == 201
+    data = response.json()
+
+    from uuid import UUID
+    return type('Session', (), {
+        'id': UUID(data["id"]),
+        'join_code': data["join_code"],
+        'status': data["status"],
+        'presentation_id': UUID(data["presentation_id"]),
+    })()

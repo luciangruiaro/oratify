@@ -16,6 +16,17 @@ from app.schemas.auth import (
     SpeakerWithTokens,
     TokenResponse,
 )
+from app.schemas.session import (
+    CurrentSlideUpdate,
+    SessionCreate,
+    SessionDetailResponse,
+    SessionJoinInfo,
+    SessionListResponse,
+    SessionResponse,
+    SessionStatistics,
+    SessionStatus,
+    SessionUpdate,
+)
 
 __all__ = [
     "LoginRequest",
@@ -27,4 +38,14 @@ __all__ = [
     "SpeakerResponse",
     "SpeakerWithTokens",
     "TokenResponse",
+    # Session schemas
+    "CurrentSlideUpdate",
+    "SessionCreate",
+    "SessionDetailResponse",
+    "SessionJoinInfo",
+    "SessionListResponse",
+    "SessionResponse",
+    "SessionStatistics",
+    "SessionStatus",
+    "SessionUpdate",
 ]
