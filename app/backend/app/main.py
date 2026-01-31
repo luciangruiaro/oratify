@@ -20,8 +20,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
+from app.api import auth
 from app.core.config import get_settings
-from app.core.database import engine, close_db
+from app.core.database import close_db, engine
 
 settings = get_settings()
 
@@ -115,8 +116,12 @@ async def health_check():
     }
 
 
-# API Routers will be included here after creation
-# from app.api import auth, presentations, sessions
-# app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
+# Include API routers
+app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
+
+# Future routers:
 # app.include_router(presentations.router, prefix="/api/presentations", tags=["Presentations"])
+# app.include_router(slides.router, prefix="/api/slides", tags=["Slides"])
 # app.include_router(sessions.router, prefix="/api/sessions", tags=["Sessions"])
+# app.include_router(responses.router, prefix="/api/responses", tags=["Responses"])
+# app.include_router(admin.router, prefix="/api/admin", tags=["Admin"])

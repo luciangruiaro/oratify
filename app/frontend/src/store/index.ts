@@ -8,7 +8,7 @@
  *
  * Usage:
  *   import { store } from '@/store'
- *   import { useAppDispatch, useAppSelector } from '@/store'
+ *   import type { RootState, AppDispatch } from '@/store'
  */
 
 import { configureStore } from '@reduxjs/toolkit'

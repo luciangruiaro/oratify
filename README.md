@@ -210,7 +210,7 @@ See `.env.example` for full list.
 
 See [backlog-tracker.md](docs/backlog-tracker.md) for current progress.
 
-**Current Phase:** Foundation (Epic 1 Complete)
+**Current Phase:** Foundation Complete (Epics 1-3 Done)
 
 ## License
 

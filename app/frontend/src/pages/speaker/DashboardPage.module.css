@@ -1,0 +1,123 @@
+/**
+ * Dashboard Page Styles
+ */
+
+.container {
+  min-height: 100vh;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--color-charcoal);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--color-cyan);
+  margin: 0;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.userName {
+  color: var(--color-light);
+  opacity: 0.8;
+}
+
+.logoutButton {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: transparent;
+  color: var(--color-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.logoutButton:hover:not(:disabled) {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+.logoutButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+.welcome {
+  margin-bottom: var(--spacing-xl);
+}
+
+.welcome h2 {
+  font-size: 1.75rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.welcome p {
+  color: var(--color-light);
+  opacity: 0.7;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl);
+  background-color: var(--color-charcoal);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.placeholderIcon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.placeholder h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.placeholder p {
+  color: var(--color-light);
+  opacity: 0.7;
+  margin-bottom: var(--spacing-lg);
+}
+
+.createButton {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-cyan);
+  color: var(--color-dark);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.createButton:hover:not(:disabled) {
+  background-color: var(--color-teal);
+}
+
+.createButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
