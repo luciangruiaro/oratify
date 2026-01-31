@@ -1,0 +1,23 @@
+- communication BE <-> FE should be done via REST API and websocket 2 ways and realtime
+- FE is React with Vite as bundler and live reload on dev mode
+- BE is py with live reload on dev mode Gunicorn as server
+- DB is Postgres packed in a docker container
+- They run all in a docker-compose setup
+- BE handle data as ORM with SQLAlchemy
+- BE expose REST API with FastAPI
+- BE expose websocket with FastAPI
+- BE handle authentication with JWT tokens
+- FE handle state management with Redux Toolkit
+- Postgres has the role for storing persistent data, but the cache layer is handled in app memory with Python dicts and lists for simplicity
+- All configuration is handled with environment variables loaded from a .env file in docker-compose
+- Logging is done with Python logging module on BE and with console.log on FE
+- Error handling is done with FastAPI exception handlers on BE and with React error boundaries on FE
+- Testing is done with Pytest on BE and with Jest on FE
+- Health checks are exposed on BE with a dedicated /health endpoint
+- CORS is handled on BE with FastAPI middleware to allow FE to communicate with it
+- Ports should be not conflicting, e.g., BE on 8000, FE on 3000, Postgres on 5432
+- Dockerfiles for BE and FE should be optimized for production with multi-stage builds
+- Documentation should be generated with Sphinx for BE and with Storybook for FE
+- Coding practices follows PEP 8 for Python and Airbnb style guide for JavaScript. Use best practices for security, performance, and scalability.
+- The FE has both desktop and mobile responsive designs using CSS Flexbox and Grid
+- We have 3 main components of the system: Presentation Website, Application (FE + BE + Database) and Admin Dashboard

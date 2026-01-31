@@ -1,0 +1,10 @@
+- I need the app that helps users build interactive stories with branching narratives.
+- The app should allow users to create characters, settings, and plot points easily.
+- Users should be able to visualize the story flow with a drag-and-drop interface.
+- The app should support multimedia elements like images, audio, and video to enhance storytelling. Also it should support Google Slides integration and help users jump from a slide to another.
+- There should be options for collaboration, allowing multiple users to work on the same story simultaneously.
+- We have 3 perspectives: admin, speaker (who builds the slide, story, timeline, questions etc) and audience (who views the final product).
+- Main color palette is ["2c2d2f","0de7e7","c73a52","eeeeee"] and if really needed a secondary palette: ["1cb9c8","001240","ed6a5a","292f36","e4c02e"]
+- I have several websites as inspiration for this platform: Google Slides (for slide creation and presentation), Twine (for branching narratives), Mentimeter (for audience interaction). My own contribution is that I enable speakers to branch the storyline based on audience input in real-time.
+- Also, audience is capable of voting on different plot directions, and the speaker can adapt the story based on audience choices.
+- Also, the audience can submit questions during the presentation, and the speaker can choose to address them in real-time. Moreover, when the speaker designs the storyline, it has included its own notes so that if users are asking questions, they also get an answer in real time who imitate the speaker's style.
