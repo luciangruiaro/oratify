@@ -1,0 +1,115 @@
+/**
+ * Properties Panel Styles
+ */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  height: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.sectionTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-light);
+  opacity: 0.5;
+  letter-spacing: 0.05em;
+}
+
+.sectionHint {
+  font-size: 0.75rem;
+  color: var(--color-light);
+  opacity: 0.5;
+  line-height: 1.4;
+}
+
+/* Type Info */
+.typeInfo {
+  padding: var(--spacing-sm);
+  background-color: var(--color-dark);
+  border-radius: var(--radius-md);
+}
+
+.typeLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-cyan);
+}
+
+.typeDescription {
+  font-size: 0.75rem;
+  color: var(--color-light);
+  opacity: 0.6;
+  margin-top: var(--spacing-xs);
+  line-height: 1.4;
+}
+
+/* Notes Input */
+.notesInput {
+  width: 100%;
+  padding: var(--spacing-sm);
+  background-color: var(--color-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--color-light);
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.2s;
+}
+
+.notesInput:focus {
+  outline: none;
+  border-color: var(--color-cyan);
+}
+
+.notesInput::placeholder {
+  color: var(--color-light);
+  opacity: 0.4;
+}
+
+.notesInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Shortcuts */
+.shortcuts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.shortcut {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.75rem;
+  color: var(--color-light);
+  opacity: 0.7;
+}
+
+.shortcut kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 20px;
+  padding: 0 var(--spacing-xs);
+  background-color: var(--color-dark);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.625rem;
+  color: var(--color-light);
+}

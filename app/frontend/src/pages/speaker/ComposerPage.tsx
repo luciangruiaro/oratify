@@ -11,7 +11,7 @@
  */
 
 import { useEffect, useCallback, useRef, useState } from 'react'
-import { useParams, useNavigate, Link, useBlocker } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import {
   fetchPresentation,
@@ -27,6 +27,7 @@ import {
   duplicateSlide,
   reorderSlides,
   selectSlide,
+  clearSlides,
   selectSlideItems,
   selectSelectedSlide,
   selectSelectedSlideId,
@@ -83,6 +84,10 @@ export function ComposerPage() {
       dispatch(fetchPresentation(id))
       dispatch(fetchSlides(id))
     }
+    // Cleanup on unmount
+    return () => {
+      dispatch(clearSlides())
+    }
   }, [dispatch, id])
 
   // Sync speaker notes from presentation
@@ -92,11 +97,18 @@ export function ComposerPage() {
     }
   }, [presentation])
 
-  // Block navigation if there are unsaved changes
-  const blocker = useBlocker(
-    ({ currentLocation, nextLocation }) =>
-      saveStatus === 'unsaved' && currentLocation.pathname !== nextLocation.pathname
-  )
+  // Warn on browser close/refresh if there are unsaved changes
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (saveStatus === 'unsaved') {
+        e.preventDefault()
+        e.returnValue = ''
+      }
+    }
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+  }, [saveStatus])
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -413,24 +425,6 @@ export function ComposerPage() {
         </aside>
       </main>
 
-      {/* Unsaved changes modal */}
-      {blocker.state === 'blocked' && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modal}>
-            <h3>Unsaved Changes</h3>
-            <p>You have unsaved changes. Do you want to leave without saving?</p>
-            <div className={styles.modalActions}>
-              <button onClick={() => blocker.reset?.()}>Stay</button>
-              <button
-                className={styles.dangerButton}
-                onClick={() => blocker.proceed?.()}
-              >
-                Leave
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

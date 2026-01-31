@@ -4,6 +4,7 @@
 # - Vite dev server with HMR
 # - Source code mounted as volume
 # - Node modules cached in volume
+# - Tests run on startup
 
 FROM node:20-alpine
 
@@ -16,8 +17,12 @@ RUN npm install
 # Copy application code (will be overridden by volume mount)
 COPY . .
 
+# Copy and make entrypoint executable
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 # Expose port
 EXPOSE 3000
 
-# Run Vite dev server
-CMD ["npm", "run", "dev", "--", "--host"]
+# Run tests then start dev server
+ENTRYPOINT ["/docker-entrypoint.sh"]

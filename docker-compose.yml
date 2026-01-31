@@ -1,9 +1,14 @@
 # Oratify Development Environment
 #
 # Usage:
-#   docker-compose up        - Start all services
-#   docker-compose up db     - Start database only
-#   docker-compose down -v   - Stop and remove volumes
+#   docker-compose up              - Start all services
+#   docker-compose up db           - Start database only
+#   docker-compose down -v         - Stop and remove volumes
+#   docker-compose --profile test up - Start with tests enabled
+#
+# Running tests manually:
+#   docker-compose exec backend pytest tests/ -v
+#   docker-compose exec frontend npm test
 #
 # Services:
 #   - db: PostgreSQL database

@@ -14,6 +14,17 @@ echo "Database is ready!"
 echo "Running database migrations..."
 alembic upgrade head
 
+# Run tests if RUN_TESTS is set to true
+if [ "${RUN_TESTS:-false}" = "true" ]; then
+    echo "Running tests..."
+    python -m pytest tests/ -v --tb=short
+    if [ $? -ne 0 ]; then
+        echo "Tests failed! Not starting server."
+        exit 1
+    fi
+    echo "Tests passed!"
+fi
+
 # Run seed script if SEED_DB is set
 if [ "${SEED_DB:-false}" = "true" ]; then
     echo "Seeding database..."
