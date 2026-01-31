@@ -10,7 +10,7 @@ Most models also use TimestampMixin for created_at/updated_at columns.
 
 from app.models.base import Base, TimestampMixin, UUIDMixin
 from app.models.speaker import Speaker
-from app.models.presentation import Presentation
+from app.models.presentation import Presentation, PresentationStatus
 from app.models.slide import Slide
 from app.models.session import Session
 from app.models.participant import Participant
@@ -22,6 +22,7 @@ __all__ = [
     "UUIDMixin",
     "Speaker",
     "Presentation",
+    "PresentationStatus",
     "Slide",
     "Session",
     "Participant",

@@ -1,0 +1,271 @@
+/**
+ * Presentation Settings Page Styles
+ */
+
+.container {
+  min-height: 100vh;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--color-charcoal);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.backButton {
+  color: var(--color-light);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.backButton:hover {
+  opacity: 1;
+}
+
+.pageTitle {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.section {
+  background-color: var(--color-charcoal);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  color: var(--color-cyan);
+  margin-bottom: var(--spacing-md);
+}
+
+.sectionDescription {
+  opacity: 0.7;
+  margin-bottom: var(--spacing-md);
+  font-size: 0.9rem;
+}
+
+.field {
+  margin-bottom: var(--spacing-md);
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  display: block;
+  color: var(--color-light);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--color-light);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(238, 238, 238, 0.4);
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--color-cyan);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.select {
+  cursor: pointer;
+}
+
+.hint {
+  margin-top: var(--spacing-xs);
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saveButton {
+  padding: var(--spacing-sm) var(--spacing-xl);
+  background-color: var(--color-cyan);
+  color: var(--color-dark);
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: var(--color-teal);
+}
+
+.saveButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dangerZone {
+  background-color: rgba(199, 58, 82, 0.1);
+  border: 1px solid rgba(199, 58, 82, 0.3);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.dangerTitle {
+  font-size: 1rem;
+  color: var(--color-red);
+  margin-bottom: var(--spacing-sm);
+}
+
+.dangerZone p {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  margin-bottom: var(--spacing-md);
+}
+
+.deleteButton {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-red);
+  color: var(--color-light);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.deleteButton:hover {
+  opacity: 0.9;
+}
+
+/* Delete confirmation modal */
+.confirmOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.confirmModal {
+  background-color: var(--color-charcoal);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  max-width: 400px;
+  text-align: center;
+}
+
+.confirmModal h3 {
+  color: var(--color-red);
+  margin-bottom: var(--spacing-sm);
+}
+
+.confirmModal p {
+  opacity: 0.7;
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.9rem;
+}
+
+.confirmButtons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+.cancelButton,
+.confirmDeleteButton {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.cancelButton {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-light);
+}
+
+.confirmDeleteButton {
+  background-color: var(--color-red);
+  border: none;
+  color: var(--color-light);
+}
+
+.cancelButton:disabled,
+.confirmDeleteButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading,
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: var(--spacing-md);
+}
+
+.notFound h2 {
+  color: var(--color-cyan);
+}
+
+.backLink {
+  color: var(--color-cyan);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}

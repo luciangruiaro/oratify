@@ -18,17 +18,14 @@ import asyncio
 import uuid
 from datetime import datetime, timezone
 
-from passlib.context import CryptContext
+import bcrypt
 from sqlalchemy import delete, text
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 
-# Password hashing
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 
 def hash_password(password: str) -> str:
-    """Hash a password using bcrypt."""
-    return pwd_context.hash(password)
+    """Hash a password using bcrypt directly."""
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
 
 # Sample data
@@ -229,20 +226,22 @@ async def seed_database(database_url: str) -> None:
         # Insert slides
         print("Creating slides...")
         slide_count = 0
+        import json
         for pres in PRESENTATIONS:
             slides = get_slides_for_presentation(pres["id"])
             for slide in slides:
+                content_json = json.dumps(slide["content"])
                 await session.execute(
                     text("""
                         INSERT INTO slides (id, presentation_id, order_index, type, content, created_at, updated_at)
-                        VALUES (:id, :presentation_id, :order_index, :type, :content::jsonb, now(), now())
+                        VALUES (:id, :presentation_id, :order_index, :type, cast(:content as jsonb), now(), now())
                     """),
                     {
                         "id": slide["id"],
                         "presentation_id": slide["presentation_id"],
                         "order_index": slide["order_index"],
                         "type": slide["type"],
-                        "content": str(slide["content"]).replace("'", '"'),
+                        "content": content_json,
                     },
                 )
                 slide_count += 1

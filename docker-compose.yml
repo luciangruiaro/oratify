@@ -10,8 +10,6 @@
 #   - backend: FastAPI application
 #   - frontend: React Vite dev server
 
-version: '3.8'
-
 services:
   db:
     image: postgres:15-alpine
@@ -45,6 +43,8 @@ services:
       - JWT_SECRET_KEY=${JWT_SECRET_KEY:-dev-secret-key}
       - DEBUG=true
       - CORS_ORIGINS=http://localhost:3000,http://localhost:5173
+      - POSTGRES_USER=${POSTGRES_USER:-oratify}
+      - SEED_DB=${SEED_DB:-true}
     depends_on:
       db:
         condition: service_healthy

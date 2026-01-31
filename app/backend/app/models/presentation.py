@@ -11,9 +11,18 @@ Status flow: draft -> active -> ended
 """
 
 import uuid
+from enum import Enum
 from typing import TYPE_CHECKING, List, Optional
 
 from sqlalchemy import ForeignKey, String, Text
+
+
+class PresentationStatus(str, Enum):
+    """Presentation status enum."""
+
+    DRAFT = "draft"
+    ACTIVE = "active"
+    ARCHIVED = "archived"
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -86,7 +95,7 @@ class Presentation(TimestampMixin, Base):
     status: Mapped[str] = mapped_column(
         String(20),
         nullable=False,
-        default="draft",
+        default=PresentationStatus.DRAFT.value,
     )
 
     # Relationships

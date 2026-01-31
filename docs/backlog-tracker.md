@@ -7,13 +7,13 @@
 | Phase | Status | Progress | Completed | Total |
 |-------|--------|----------|-----------|-------|
 | Phase 1: Foundation | Done | 100% | 40 | 40 |
-| Phase 2: Core Domain | Not Started | 0% | 0 | 43 |
+| Phase 2: Core Domain | In Progress | 25% | 11 | 43 |
 | Phase 3: Live Features | Not Started | 0% | 0 | 82 |
 | Phase 4: Intelligence | Not Started | 0% | 0 | 30 |
 | Phase 5: Management | Not Started | 0% | 0 | 27 |
 | Phase 6: Quality | Not Started | 0% | 0 | 44 |
 | Phase 7: Release | Not Started | 0% | 0 | 25 |
-| **Grand Total** | **In Progress** | **14%** | **40** | **281** |
+| **Grand Total** | **In Progress** | **18%** | **51** | **281** |
 
 ---
 
@@ -83,18 +83,18 @@
 ### Epic 4: Presentation Management
 | ID | Story | Status | Estimate (h) |
 |----|-------|--------|--------------|
-| 4.1 | Create presentation CRUD endpoints | Pending | 4 |
-| 4.2 | Implement slug generation and uniqueness validation | Pending | 2 |
-| 4.3 | Implement presentation status state machine | Pending | 2 |
-| 4.4 | Create speaker notes text field handling | Pending | 1 |
-| 4.5 | Build presentations list page | Pending | 4 |
-| 4.6 | Build presentation card component | Pending | 2 |
-| 4.7 | Build create presentation modal | Pending | 3 |
-| 4.8 | Build presentation settings page | Pending | 4 |
-| 4.9 | Implement presentation duplication | Pending | 2 |
-| 4.10 | Implement presentation deletion with confirmation | Pending | 2 |
-| 4.11 | Add presentation search and filtering | Pending | 3 |
-| | **Epic 4 Total** | | **29** |
+| 4.1 | Create presentation CRUD endpoints | Done | 4 |
+| 4.2 | Implement slug generation and uniqueness validation | Done | 2 |
+| 4.3 | Implement presentation status state machine | Done | 2 |
+| 4.4 | Create speaker notes text field handling | Done | 1 |
+| 4.5 | Build presentations list page | Done | 4 |
+| 4.6 | Build presentation card component | Done | 2 |
+| 4.7 | Build create presentation modal | Done | 3 |
+| 4.8 | Build presentation settings page | Done | 4 |
+| 4.9 | Implement presentation duplication | Done | 2 |
+| 4.10 | Implement presentation deletion with confirmation | Done | 2 |
+| 4.11 | Add presentation search and filtering | Done | 3 |
+| | **Epic 4 Total** | **Done** | **29** |
 
 ### Epic 5: Slide Management Backend
 | ID | Story | Status | Estimate (h) |
@@ -477,6 +477,7 @@
 | 2026-01-31 | 1 | 1.1-1.12 | Epic 1: Project Setup & Infrastructure - Complete |
 | 2026-01-31 | 2 | 2.1-2.10 | Epic 2: Database Schema & ORM - Complete |
 | 2026-01-31 | 3 | 3.1-3.18 | Epic 3: Speaker Authentication - Complete |
+| 2026-01-31 | 4 | 4.1-4.11 | Epic 4: Presentation Management - Complete |
 
 ---
 
@@ -484,7 +485,7 @@
 
 | Epic | Story | Description |
 |------|-------|-------------|
-| 4 | - | Presentation Management (Next)
+| 5 | - | Slide Management Backend (Next)
 
 ---
 
@@ -507,3 +508,4 @@ _No blocked items._
 | 2026-01-31 | Updated all README.md and architecture.mmd files |
 | 2026-01-31 | Epic 2 complete - all models and migrations created |
 | 2026-01-31 | Epic 3 complete - full speaker authentication (backend + frontend) |
+| 2026-01-31 | Epic 4 complete - presentation CRUD, dashboard UI, settings page |

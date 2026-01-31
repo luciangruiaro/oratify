@@ -18,6 +18,8 @@ import { LoginPage } from '@/pages/auth/LoginPage'
 import { RegisterPage } from '@/pages/auth/RegisterPage'
 import { ResetPasswordPage, ResetPasswordConfirmPage } from '@/pages/auth/ResetPasswordPage'
 import { DashboardPage } from '@/pages/speaker/DashboardPage'
+import { ComposerPage } from '@/pages/speaker/ComposerPage'
+import { PresentationSettingsPage } from '@/pages/speaker/PresentationSettingsPage'
 
 /**
  * App content with routing - must be inside Provider
@@ -56,6 +58,22 @@ function AppContent() {
             element={
               <ProtectedRoute>
                 <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/presentations/:id/edit"
+            element={
+              <ProtectedRoute>
+                <ComposerPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/presentations/:id/settings"
+            element={
+              <ProtectedRoute>
+                <PresentationSettingsPage />
               </ProtectedRoute>
             }
           />

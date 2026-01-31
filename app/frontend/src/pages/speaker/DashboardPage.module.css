@@ -17,7 +17,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.title {
+.logo {
   font-size: 1.5rem;
   color: var(--color-cyan);
   margin: 0;
@@ -55,26 +55,108 @@
 }
 
 .main {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: var(--spacing-xl);
 }
 
-.welcome {
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  align-items: center;
   margin-bottom: var(--spacing-xl);
 }
 
-.welcome h2 {
-  font-size: 1.75rem;
-  margin-bottom: var(--spacing-xs);
+.searchSection {
+  flex: 1;
+  min-width: 200px;
 }
 
-.welcome p {
+.searchInput {
+  width: 100%;
+  max-width: 400px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-charcoal);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--color-light);
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.searchInput::placeholder {
+  color: rgba(238, 238, 238, 0.4);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--color-cyan);
+}
+
+.filters {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.filterButton {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: transparent;
+  color: var(--color-light);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  font-size: 0.875rem;
+}
+
+.filterButton:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.filterButton.active {
+  background-color: var(--color-cyan);
+  color: var(--color-dark);
+  border-color: var(--color-cyan);
+}
+
+.createButton {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-cyan);
+  color: var(--color-dark);
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.createButton:hover {
+  background-color: var(--color-teal);
+}
+
+.error {
+  background-color: rgba(199, 58, 82, 0.1);
+  border: 1px solid var(--color-red);
+  color: var(--color-red);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl);
+  gap: var(--spacing-md);
   color: var(--color-light);
   opacity: 0.7;
 }
 
-.placeholder {
+.emptyState {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,24 +167,24 @@
   text-align: center;
 }
 
-.placeholderIcon {
+.emptyIcon {
   font-size: 4rem;
   margin-bottom: var(--spacing-md);
 }
 
-.placeholder h3 {
-  font-size: 1.25rem;
+.emptyState h2 {
+  font-size: 1.5rem;
   margin-bottom: var(--spacing-xs);
 }
 
-.placeholder p {
+.emptyState p {
   color: var(--color-light);
-  opacity: 0.7;
+  opacity: 0.6;
   margin-bottom: var(--spacing-lg);
 }
 
-.createButton {
-  padding: var(--spacing-sm) var(--spacing-lg);
+.emptyCreateButton {
+  padding: var(--spacing-sm) var(--spacing-xl);
   background-color: var(--color-cyan);
   color: var(--color-dark);
   border: none;
@@ -113,11 +195,47 @@
   transition: background-color 0.2s;
 }
 
-.createButton:hover:not(:disabled) {
+.emptyCreateButton:hover {
   background-color: var(--color-teal);
 }
 
-.createButton:disabled {
-  opacity: 0.6;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pageButton {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-charcoal);
+  color: var(--color-light);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.pageButton:hover:not(:disabled) {
+  border-color: var(--color-cyan);
+}
+
+.pageButton:disabled {
+  opacity: 0.4;
   cursor: not-allowed;
+}
+
+.pageInfo {
+  color: var(--color-light);
+  opacity: 0.6;
+  font-size: 0.875rem;
 }
