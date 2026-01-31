@@ -1,0 +1,33 @@
+# Git
+.git
+.gitignore
+
+# Dependencies - mounted as volume in dev
+node_modules
+
+# Build output
+dist
+build
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Test artifacts
+coverage
+.nyc_output
+
+# Local env files
+.env.local
+.env.*.local
+
+# Docker
+Dockerfile*
+docker-compose*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

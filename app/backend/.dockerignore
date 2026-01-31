@@ -1,0 +1,43 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache
+.mypy_cache
+.ruff_cache
+htmlcov
+.coverage
+*.egg-info
+
+# Virtual environments
+venv
+.venv
+env
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Test artifacts
+.tox
+.nox
+
+# Build
+dist
+build
+
+# Local env files
+.env.local
+.env.*.local
+
+# Docker
+Dockerfile*
+docker-compose*
