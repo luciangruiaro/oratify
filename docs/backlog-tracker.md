@@ -7,13 +7,13 @@
 | Phase | Status | Progress | Completed | Total |
 |-------|--------|----------|-----------|-------|
 | Phase 1: Foundation | Done | 100% | 40 | 40 |
-| Phase 2: Core Domain | In Progress | 51% | 22 | 43 |
+| Phase 2: Core Domain | Done | 100% | 43 | 43 |
 | Phase 3: Live Features | Not Started | 0% | 0 | 82 |
 | Phase 4: Intelligence | Not Started | 0% | 0 | 30 |
 | Phase 5: Management | Not Started | 0% | 0 | 27 |
 | Phase 6: Quality | Not Started | 0% | 0 | 44 |
 | Phase 7: Release | Not Started | 0% | 0 | 25 |
-| **Grand Total** | **In Progress** | **22%** | **62** | **281** |
+| **Grand Total** | **In Progress** | **30%** | **83** | **281** |
 
 ---
 
@@ -115,28 +115,28 @@
 ### Epic 6: Presentation Composer UI
 | ID | Story | Status | Estimate (h) |
 |----|-------|--------|--------------|
-| 6.1 | Build composer page layout | Pending | 4 |
-| 6.2 | Build slide thumbnail component | Pending | 2 |
-| 6.3 | Build slide thumbnail list in sidebar | Pending | 3 |
-| 6.4 | Implement drag-and-drop slide reordering | Pending | 4 |
-| 6.5 | Build add slide dropdown menu | Pending | 2 |
-| 6.6 | Build delete slide with confirmation | Pending | 2 |
-| 6.7 | Build content slide editor | Pending | 4 |
-| 6.8 | Build image upload component with preview | Pending | 4 |
-| 6.9 | Build rich text editor for slide content | Pending | 6 |
-| 6.10 | Build question slide editor (text input type) | Pending | 3 |
-| 6.11 | Build question slide editor (multiple choice type) | Pending | 4 |
-| 6.12 | Build multiple choice options editor | Pending | 3 |
-| 6.13 | Build summary slide configuration panel | Pending | 2 |
-| 6.14 | Build conclusion slide configuration panel | Pending | 2 |
-| 6.15 | Build speaker notes editor in properties panel | Pending | 3 |
-| 6.16 | Implement auto-save with debounce | Pending | 3 |
-| 6.17 | Build save status indicator | Pending | 1 |
-| 6.18 | Implement unsaved changes warning on navigation | Pending | 2 |
-| 6.19 | Build preview mode toggle | Pending | 2 |
-| 6.20 | Build preview mode slide renderer | Pending | 4 |
-| 6.21 | Add keyboard shortcuts for composer actions | Pending | 2 |
-| | **Epic 6 Total** | | **62** |
+| 6.1 | Build composer page layout | Done | 4 |
+| 6.2 | Build slide thumbnail component | Done | 2 |
+| 6.3 | Build slide thumbnail list in sidebar | Done | 3 |
+| 6.4 | Implement drag-and-drop slide reordering | Done | 4 |
+| 6.5 | Build add slide dropdown menu | Done | 2 |
+| 6.6 | Build delete slide with confirmation | Done | 2 |
+| 6.7 | Build content slide editor | Done | 4 |
+| 6.8 | Build image upload component with preview | Done | 4 |
+| 6.9 | Build rich text editor for slide content | Done | 6 |
+| 6.10 | Build question slide editor (text input type) | Done | 3 |
+| 6.11 | Build question slide editor (multiple choice type) | Done | 4 |
+| 6.12 | Build multiple choice options editor | Done | 3 |
+| 6.13 | Build summary slide configuration panel | Done | 2 |
+| 6.14 | Build conclusion slide configuration panel | Done | 2 |
+| 6.15 | Build speaker notes editor in properties panel | Done | 3 |
+| 6.16 | Implement auto-save with debounce | Done | 3 |
+| 6.17 | Build save status indicator | Done | 1 |
+| 6.18 | Implement unsaved changes warning on navigation | Done | 2 |
+| 6.19 | Build preview mode toggle | Done | 2 |
+| 6.20 | Build preview mode slide renderer | Done | 4 |
+| 6.21 | Add keyboard shortcuts for composer actions | Done | 2 |
+| | **Epic 6 Total** | **Done** | **62** |
 
 **Phase 2 Total: 117 hours**
 
@@ -479,6 +479,7 @@
 | 2026-01-31 | 3 | 3.1-3.18 | Epic 3: Speaker Authentication - Complete |
 | 2026-01-31 | 4 | 4.1-4.11 | Epic 4: Presentation Management - Complete |
 | 2026-01-31 | 5 | 5.1-5.11 | Epic 5: Slide Management Backend - Complete |
+| 2026-01-31 | 6 | 6.1-6.21 | Epic 6: Presentation Composer UI - Complete |
 
 ---
 
@@ -486,7 +487,7 @@
 
 | Epic | Story | Description |
 |------|-------|-------------|
-| 6 | - | Presentation Composer UI (Next)
+| 7 | - | Session Management (Next)
 
 ---
 
@@ -511,3 +512,4 @@ _No blocked items._
 | 2026-01-31 | Epic 3 complete - full speaker authentication (backend + frontend) |
 | 2026-01-31 | Epic 4 complete - presentation CRUD, dashboard UI, settings page |
 | 2026-01-31 | Epic 5 complete - slide CRUD, JSONB schemas, image upload |
+| 2026-01-31 | Epic 6 complete - full presentation composer UI with all 5 slide type editors |

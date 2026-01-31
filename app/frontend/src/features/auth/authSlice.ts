@@ -41,7 +41,7 @@ const initialState: AuthState = {
  */
 export const initializeAuth = createAsyncThunk(
   'auth/initialize',
-  async (_, { rejectWithValue }) => {
+  async () => {
     if (!hasStoredTokens()) {
       return null
     }

@@ -1,0 +1,18 @@
+/**
+ * Slide Editor Styles
+ */
+
+.editor {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.unsupported {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl);
+  color: var(--color-light);
+  opacity: 0.5;
+}

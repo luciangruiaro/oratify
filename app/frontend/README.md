@@ -50,6 +50,19 @@ frontend/
 │   │   ├── charts/              # Data visualization
 │   │   │   ├── BarChart/
 │   │   │   └── WordCloud/
+│   │   ├── composer/            # Composer components (Epic 6)
+│   │   │   ├── SlideThumbnail.tsx    # Slide preview in sidebar
+│   │   │   ├── AddSlideDropdown.tsx  # Add slide menu
+│   │   │   ├── SlideEditor.tsx       # Main editor router
+│   │   │   ├── SlidePreview.tsx      # Preview mode renderer
+│   │   │   ├── SaveStatusIndicator.tsx # Auto-save status
+│   │   │   ├── PropertiesPanel.tsx   # Speaker notes & shortcuts
+│   │   │   └── editors/              # Type-specific editors
+│   │   │       ├── ContentEditor.tsx      # Text + image
+│   │   │       ├── QuestionTextEditor.tsx # Free-text questions
+│   │   │       ├── QuestionChoiceEditor.tsx # Multiple choice
+│   │   │       ├── SummaryEditor.tsx      # Summary config
+│   │   │       └── ConclusionEditor.tsx   # Conclusion config
 │   │   └── slides/              # Slide renderers
 │   │       ├── ContentSlide/
 │   │       ├── QuestionSlide/
@@ -61,10 +74,10 @@ frontend/
 │   │   │   ├── components/      # Auth-specific components
 │   │   │   ├── hooks/           # Auth hooks
 │   │   │   └── authSlice.ts     # Auth Redux slice
-│   │   ├── composer/            # Presentation composer
-│   │   │   ├── components/
-│   │   │   ├── hooks/
-│   │   │   └── slidesSlice.ts
+│   │   ├── presentations/       # Presentations feature
+│   │   │   └── presentationsSlice.ts  # CRUD for presentations
+│   │   ├── slides/              # Slides feature (Epic 6)
+│   │   │   └── slidesSlice.ts   # Slide CRUD, selection, reorder
 │   │   ├── presenter/           # Presenter view
 │   │   │   ├── components/
 │   │   │   └── hooks/
@@ -180,27 +193,36 @@ frontend/
   presentations: {
     items: Presentation[],
     current: Presentation | null,
-    isLoading: boolean
+    total: number,
+    page: number,
+    pageSize: number,
+    search: string,
+    statusFilter: PresentationStatus | null,
+    isLoading: boolean,
+    isCreating: boolean,
+    isUpdating: boolean,
+    isDeleting: boolean,
+    error: string | null
   },
   slides: {
     items: Slide[],
-    currentId: string | null,
-    isDirty: boolean
+    selectedId: string | null,
+    presentationId: string | null,
+    total: number,
+    isLoading: boolean,
+    isCreating: boolean,
+    isUpdating: boolean,
+    isDeleting: boolean,
+    isReordering: boolean,
+    saveStatus: 'saved' | 'saving' | 'unsaved' | 'error',
+    lastSaved: string | null,
+    error: string | null,
+    previewMode: boolean
   },
-  session: {
-    active: Session | null,
-    participants: Participant[],
-    currentSlideId: string | null
-  },
-  responses: {
-    items: Response[],
-    aggregated: AggregatedVotes
-  },
-  ui: {
-    toast: ToastMessage | null,
-    modal: ModalState,
-    sidebarOpen: boolean
-  }
+  // Future slices:
+  // session: { ... },
+  // responses: { ... },
+  // ui: { ... }
 }
 ```
 

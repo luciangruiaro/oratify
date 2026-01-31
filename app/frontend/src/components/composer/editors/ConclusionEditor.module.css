@@ -1,0 +1,348 @@
+/**
+ * Conclusion Editor Styles
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-light);
+  opacity: 0.7;
+}
+
+.titleInput {
+  width: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--color-charcoal);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--color-light);
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: border-color 0.2s;
+}
+
+.titleInput:focus {
+  outline: none;
+  border-color: var(--color-cyan);
+}
+
+.titleInput::placeholder {
+  color: var(--color-light);
+  opacity: 0.4;
+}
+
+.titleInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Toggle Section */
+.toggleSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--color-charcoal);
+  border-radius: var(--radius-md);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-light);
+}
+
+.checkboxLabel input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--color-cyan);
+}
+
+.checkboxLabel input:disabled {
+  cursor: not-allowed;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: var(--color-light);
+  opacity: 0.5;
+  margin-left: 26px;
+}
+
+/* Conclusions List */
+.conclusionsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.conclusionItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--color-charcoal);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s, opacity 0.2s, transform 0.2s;
+}
+
+.conclusionItem:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.conclusionItem.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+  border-color: var(--color-cyan);
+}
+
+.dragHandle {
+  cursor: grab;
+  color: var(--color-light);
+  opacity: 0.4;
+  font-size: 0.875rem;
+  padding: var(--spacing-xs);
+}
+
+.dragHandle:hover {
+  opacity: 0.7;
+}
+
+.bulletPoint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-dark);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-cyan);
+  flex-shrink: 0;
+}
+
+.conclusionInput {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--color-light);
+  font-family: inherit;
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+}
+
+.conclusionInput:focus {
+  outline: none;
+  border-color: var(--color-cyan);
+}
+
+.conclusionInput::placeholder {
+  color: var(--color-light);
+  opacity: 0.4;
+}
+
+.conclusionInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.removeConclusion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-light);
+  opacity: 0.4;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.removeConclusion:hover:not(:disabled) {
+  opacity: 1;
+  color: var(--color-red);
+}
+
+.removeConclusion:disabled {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+.addConclusion {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: none;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-light);
+  opacity: 0.7;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+
+.addConclusion:hover:not(:disabled) {
+  border-color: var(--color-cyan);
+  opacity: 1;
+}
+
+.addConclusion:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+/* Text Input */
+.textInput {
+  width: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--color-charcoal);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--color-light);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.textInput:focus {
+  outline: none;
+  border-color: var(--color-cyan);
+}
+
+.textInput::placeholder {
+  color: var(--color-light);
+  opacity: 0.4;
+}
+
+.textInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Preview */
+.preview {
+  background-color: var(--color-charcoal);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.previewLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-light);
+  opacity: 0.5;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-md);
+}
+
+.previewContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.previewTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-cyan);
+}
+
+.previewList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.previewList li {
+  position: relative;
+  padding-left: var(--spacing-lg);
+  color: var(--color-light);
+  line-height: 1.5;
+}
+
+.previewList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-cyan);
+  border-radius: 50%;
+}
+
+.previewList li.placeholder {
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.previewList li.placeholder::before {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.previewThankYou {
+  font-size: 1.125rem;
+  color: var(--color-light);
+  font-style: italic;
+  opacity: 0.8;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.aiPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl);
+  background-color: var(--color-dark);
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.aiIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: var(--color-cyan);
+  color: var(--color-dark);
+  border-radius: 50%;
+}
+
+.aiPlaceholder p {
+  font-size: 0.875rem;
+  color: var(--color-light);
+  opacity: 0.6;
+}

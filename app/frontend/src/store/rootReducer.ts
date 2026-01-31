@@ -13,12 +13,13 @@
 import { combineReducers } from '@reduxjs/toolkit'
 import authReducer from '@/features/auth/authSlice'
 import presentationsReducer from '@/features/presentations/presentationsSlice'
+import slidesReducer from '@/features/slides/slidesSlice'
 
 export const rootReducer = combineReducers({
   auth: authReducer,
   presentations: presentationsReducer,
+  slides: slidesReducer,
   // Future slices:
-  // slides: slidesReducer,
   // session: sessionReducer,
   // ui: uiReducer,
 })

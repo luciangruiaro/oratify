@@ -1,0 +1,53 @@
+/**
+ * Save Status Indicator Styles
+ */
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.75rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.icon {
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.text {
+  white-space: nowrap;
+}
+
+/* Status variants */
+.saved {
+  color: var(--color-cyan);
+  background-color: rgba(13, 231, 231, 0.1);
+}
+
+.saving {
+  color: var(--color-gold);
+  background-color: rgba(228, 192, 46, 0.1);
+}
+
+.saving .icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.unsaved {
+  color: var(--color-gold);
+  background-color: rgba(228, 192, 46, 0.1);
+}
+
+.error {
+  color: var(--color-red);
+  background-color: rgba(199, 58, 82, 0.1);
+}
