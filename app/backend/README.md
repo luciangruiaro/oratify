@@ -186,15 +186,24 @@ Response (responses)
 | DELETE | `/api/presentations/{id}` | Delete presentation |
 | POST | `/api/presentations/{id}/duplicate` | Duplicate |
 
-### Slides (Epic 5)
+### Slides (Epic 5) - Implemented
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/api/presentations/{id}/slides` | List slides |
 | POST | `/api/presentations/{id}/slides` | Add slide |
+| POST | `/api/presentations/{id}/slides/insert/{pos}` | Insert at position |
+| GET | `/api/slides/{id}` | Get slide |
 | PUT | `/api/slides/{id}` | Update slide |
 | DELETE | `/api/slides/{id}` | Delete slide |
-| PUT | `/api/presentations/{id}/slides/reorder` | Reorder |
-| POST | `/api/upload/image` | Upload image |
+| POST | `/api/slides/{id}/duplicate` | Duplicate slide |
+| PUT | `/api/presentations/{id}/slides/reorder` | Reorder slides |
+
+### Uploads (Epic 5) - Implemented
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/uploads/images` | Upload image |
+| GET | `/api/uploads/images/{filename}` | Get image (public) |
+| DELETE | `/api/uploads/images/{filename}` | Delete image |
 
 ### Sessions (Epic 7)
 | Method | Endpoint | Description |

@@ -7,13 +7,13 @@
 | Phase | Status | Progress | Completed | Total |
 |-------|--------|----------|-----------|-------|
 | Phase 1: Foundation | Done | 100% | 40 | 40 |
-| Phase 2: Core Domain | In Progress | 25% | 11 | 43 |
+| Phase 2: Core Domain | In Progress | 51% | 22 | 43 |
 | Phase 3: Live Features | Not Started | 0% | 0 | 82 |
 | Phase 4: Intelligence | Not Started | 0% | 0 | 30 |
 | Phase 5: Management | Not Started | 0% | 0 | 27 |
 | Phase 6: Quality | Not Started | 0% | 0 | 44 |
 | Phase 7: Release | Not Started | 0% | 0 | 25 |
-| **Grand Total** | **In Progress** | **18%** | **51** | **281** |
+| **Grand Total** | **In Progress** | **22%** | **62** | **281** |
 
 ---
 
@@ -99,18 +99,18 @@
 ### Epic 5: Slide Management Backend
 | ID | Story | Status | Estimate (h) |
 |----|-------|--------|--------------|
-| 5.1 | Create slide CRUD endpoints | Pending | 4 |
-| 5.2 | Implement slide ordering logic | Pending | 2 |
-| 5.3 | Create bulk reorder slides endpoint | Pending | 2 |
-| 5.4 | Define JSONB schema for content slide type | Pending | 2 |
-| 5.5 | Define JSONB schema for question slide type (text) | Pending | 2 |
-| 5.6 | Define JSONB schema for question slide type (multiple choice) | Pending | 2 |
-| 5.7 | Define JSONB schema for summary slide type | Pending | 1 |
-| 5.8 | Define JSONB schema for conclusion slide type | Pending | 1 |
-| 5.9 | Implement slide content validation per type | Pending | 3 |
-| 5.10 | Create image upload endpoint | Pending | 4 |
-| 5.11 | Implement image storage and serving | Pending | 3 |
-| | **Epic 5 Total** | | **26** |
+| 5.1 | Create slide CRUD endpoints | Done | 4 |
+| 5.2 | Implement slide ordering logic | Done | 2 |
+| 5.3 | Create bulk reorder slides endpoint | Done | 2 |
+| 5.4 | Define JSONB schema for content slide type | Done | 2 |
+| 5.5 | Define JSONB schema for question slide type (text) | Done | 2 |
+| 5.6 | Define JSONB schema for question slide type (multiple choice) | Done | 2 |
+| 5.7 | Define JSONB schema for summary slide type | Done | 1 |
+| 5.8 | Define JSONB schema for conclusion slide type | Done | 1 |
+| 5.9 | Implement slide content validation per type | Done | 3 |
+| 5.10 | Create image upload endpoint | Done | 4 |
+| 5.11 | Implement image storage and serving | Done | 3 |
+| | **Epic 5 Total** | **Done** | **26** |
 
 ### Epic 6: Presentation Composer UI
 | ID | Story | Status | Estimate (h) |
@@ -478,6 +478,7 @@
 | 2026-01-31 | 2 | 2.1-2.10 | Epic 2: Database Schema & ORM - Complete |
 | 2026-01-31 | 3 | 3.1-3.18 | Epic 3: Speaker Authentication - Complete |
 | 2026-01-31 | 4 | 4.1-4.11 | Epic 4: Presentation Management - Complete |
+| 2026-01-31 | 5 | 5.1-5.11 | Epic 5: Slide Management Backend - Complete |
 
 ---
 
@@ -485,7 +486,7 @@
 
 | Epic | Story | Description |
 |------|-------|-------------|
-| 5 | - | Slide Management Backend (Next)
+| 6 | - | Presentation Composer UI (Next)
 
 ---
 
@@ -509,3 +510,4 @@ _No blocked items._
 | 2026-01-31 | Epic 2 complete - all models and migrations created |
 | 2026-01-31 | Epic 3 complete - full speaker authentication (backend + frontend) |
 | 2026-01-31 | Epic 4 complete - presentation CRUD, dashboard UI, settings page |
+| 2026-01-31 | Epic 5 complete - slide CRUD, JSONB schemas, image upload |

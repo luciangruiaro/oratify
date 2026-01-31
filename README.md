@@ -210,7 +210,7 @@ See `.env.example` for full list.
 
 See [backlog-tracker.md](docs/backlog-tracker.md) for current progress.
 
-**Current Phase:** Core Domain (Epics 1-4 Done)
+**Current Phase:** Core Domain (Epics 1-5 Done)
 
 ## License
 
