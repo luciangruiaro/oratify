@@ -20,6 +20,15 @@ import { ResetPasswordPage, ResetPasswordConfirmPage } from '@/pages/auth/ResetP
 import { DashboardPage } from '@/pages/speaker/DashboardPage'
 import { ComposerPage } from '@/pages/speaker/ComposerPage'
 import { PresentationSettingsPage } from '@/pages/speaker/PresentationSettingsPage'
+import {
+  JoinPage,
+  JoinBySlugPage,
+  NameEntryPage,
+  WaitingScreen,
+  EndedScreen,
+  NotFoundScreen,
+  AudiencePage,
+} from '@/pages/audience'
 
 /**
  * App content with routing - must be inside Provider
@@ -51,6 +60,16 @@ function AppContent() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/reset-password/confirm" element={<ResetPasswordConfirmPage />} />
+
+          {/* Audience join routes (public) */}
+          <Route path="/join" element={<JoinPage />} />
+          <Route path="/join/name" element={<NameEntryPage />} />
+          <Route path="/join/waiting" element={<WaitingScreen />} />
+          <Route path="/join/ended" element={<EndedScreen />} />
+          <Route path="/join/not-found" element={<NotFoundScreen />} />
+          <Route path="/join/audience" element={<AudiencePage />} />
+          <Route path="/join/:code" element={<JoinPage />} />
+          <Route path="/s/:slug" element={<JoinBySlugPage />} />
 
           {/* Protected routes */}
           <Route

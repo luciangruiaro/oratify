@@ -1,0 +1,76 @@
+/**
+ * Styles for WaitingScreen component.
+ */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  background-color: var(--color-dark);
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--color-charcoal);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--spacing-lg);
+  border: 4px solid rgba(13, 231, 231, 0.2);
+  border-top-color: var(--color-cyan);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--color-cyan);
+  margin-bottom: var(--spacing-sm);
+}
+
+.presentationTitle {
+  color: var(--color-light);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-md);
+}
+
+.message {
+  color: var(--color-light);
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-xl);
+}
+
+.backButton {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: transparent;
+  color: var(--color-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.backButton:hover {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
