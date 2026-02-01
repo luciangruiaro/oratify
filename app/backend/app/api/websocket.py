@@ -35,10 +35,12 @@ from app.schemas.websocket import (
     create_slide_info,
     ParticipantJoinedMessage,
     ParticipantLeftMessage,
+    QuestionAskedMessage,
     ResponseReceivedMessage,
     PongMessage,
 )
 from app.services import session as session_service
+from app.services import websocket_events
 
 logger = logging.getLogger(__name__)
 
@@ -227,6 +229,50 @@ async def handle_join_speaker(
     return connection
 
 
+async def get_vote_counts(
+    db: AsyncSession,
+    session_id: uuid.UUID,
+    slide_id: uuid.UUID,
+) -> tuple[dict[str, int], int]:
+    """
+    Calculate aggregated vote counts for a multiple choice slide.
+
+    Returns:
+        Tuple of (votes dict mapping option_id to count, total votes)
+    """
+    from sqlalchemy import select, func
+    from app.models import Response as ResponseModel
+
+    # Get all responses for this slide
+    result = await db.execute(
+        select(ResponseModel).where(
+            ResponseModel.session_id == session_id,
+            ResponseModel.slide_id == slide_id,
+            ResponseModel.is_ai_response == False,
+        )
+    )
+    responses = result.scalars().all()
+
+    votes: dict[str, int] = {}
+    total = 0
+
+    for response in responses:
+        content = response.content or {}
+        selected = content.get("selected")
+
+        if isinstance(selected, list):
+            # Multiple selection
+            for option_id in selected:
+                votes[option_id] = votes.get(option_id, 0) + 1
+                total += 1
+        elif isinstance(selected, str):
+            # Single selection
+            votes[selected] = votes.get(selected, 0) + 1
+            total += 1
+
+    return votes, total
+
+
 async def handle_submit_response(
     websocket: WebSocket,
     join_code: str,
@@ -293,11 +339,78 @@ async def handle_submit_response(
 
     await connection_manager.broadcast_to_speaker(join_code, response_message)
 
+    # Check if this is a multiple choice response and broadcast vote update
+    if "selected" in content:
+        votes, total = await get_vote_counts(db, session.id, uuid.UUID(slide_id))
+        await websocket_events.broadcast_vote_update(
+            session=session,
+            slide_id=slide_id,
+            votes=votes,
+            total_votes=total,
+        )
+
 
 async def handle_ping(websocket: WebSocket):
     """Handle ping message."""
     pong = PongMessage(timestamp=datetime.utcnow().isoformat()).model_dump()
     await websocket.send_json(pong)
+
+
+async def handle_ask_question(
+    websocket: WebSocket,
+    join_code: str,
+    connection_id: str,
+    message: dict,
+    db: AsyncSession,
+):
+    """Handle question submission from audience."""
+    slide_id = message.get("slide_id")
+    question_text = message.get("question_text")
+
+    if not slide_id or not question_text:
+        await websocket.send_json(
+            create_error_message("invalid_request", "slide_id and question_text required")
+        )
+        return
+
+    # Get connection info
+    connections = connection_manager.get_session_connections(join_code)
+    connection = next(
+        (c for c in connections if c.connection_id == connection_id), None
+    )
+
+    if not connection or connection.role != ConnectionRole.AUDIENCE:
+        await websocket.send_json(
+            create_error_message("forbidden", "Only audience can ask questions")
+        )
+        return
+
+    # Get session
+    session = await get_session_for_websocket(db, join_code)
+    if not session or session.status != "active":
+        await websocket.send_json(
+            create_error_message("session_not_active", "Session is not active")
+        )
+        return
+
+    # Generate question ID
+    question_id = str(uuid.uuid4())
+    created_at = datetime.utcnow().isoformat()
+
+    # Notify speaker of new question
+    question_message = QuestionAskedMessage(
+        question_id=question_id,
+        slide_id=slide_id,
+        participant_id=(
+            str(connection.participant_id) if connection.participant_id else None
+        ),
+        display_name=connection.display_name,
+        question_text=question_text,
+        created_at=created_at,
+    ).model_dump()
+
+    await connection_manager.broadcast_to_speaker(join_code, question_message)
+    logger.info(f"Question asked in session {join_code}: {question_text[:50]}...")
 
 
 @router.websocket("/ws/session/{join_code}")
@@ -371,6 +484,10 @@ async def websocket_session(
 
                     if msg_type == WSMessageType.SUBMIT_RESPONSE.value:
                         await handle_submit_response(
+                            websocket, join_code, connection_id, data, db
+                        )
+                    elif msg_type == WSMessageType.ASK_QUESTION.value:
+                        await handle_ask_question(
                             websocket, join_code, connection_id, data, db
                         )
                     elif msg_type == WSMessageType.PING.value:

@@ -23,6 +23,9 @@ export type WSMessageType =
   | 'session_resumed'
   | 'session_ended'
   | 'response_received'
+  | 'vote_update'
+  | 'question_asked'
+  | 'ai_response'
   | 'error'
   | 'pong'
 
@@ -48,6 +51,30 @@ export interface WSMessage {
   [key: string]: unknown
 }
 
+export interface VoteUpdate {
+  slide_id: string
+  votes: Record<string, number>
+  total_votes: number
+}
+
+export interface QuestionAsked {
+  question_id: string
+  slide_id: string
+  participant_id: string | null
+  display_name: string | null
+  question_text: string
+  created_at: string
+}
+
+export interface AIResponse {
+  question_id: string
+  slide_id: string
+  question_text: string
+  response_text: string
+  is_streaming: boolean
+  is_complete: boolean
+}
+
 export interface UseWebSocketOptions {
   onSessionState?: (state: SessionState) => void
   onSlideChanged?: (slide: SlideInfo, index: number) => void
@@ -70,6 +97,9 @@ export interface UseWebSocketOptions {
     content: Record<string, unknown>
     created_at: string
   }) => void
+  onVoteUpdate?: (update: VoteUpdate) => void
+  onQuestionAsked?: (question: QuestionAsked) => void
+  onAIResponse?: (response: AIResponse) => void
   onError?: (code: string, message: string) => void
   onConnect?: () => void
   onDisconnect?: () => void
@@ -91,6 +121,9 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
     onSessionResumed,
     onSessionEnded,
     onResponseReceived,
+    onVoteUpdate,
+    onQuestionAsked,
+    onAIResponse,
     onError,
     onConnect,
     onDisconnect,
@@ -247,6 +280,24 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
             break
           }
 
+          case 'vote_update': {
+            const data = getData<VoteUpdate>(message)
+            onVoteUpdate?.(data)
+            break
+          }
+
+          case 'question_asked': {
+            const data = getData<QuestionAsked>(message)
+            onQuestionAsked?.(data)
+            break
+          }
+
+          case 'ai_response': {
+            const data = getData<AIResponse>(message)
+            onAIResponse?.(data)
+            break
+          }
+
           case 'error': {
             const data = getData<{ code: string; message: string }>(message)
             setError(data)
@@ -277,6 +328,9 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
       onSessionResumed,
       onSessionEnded,
       onResponseReceived,
+      onVoteUpdate,
+      onQuestionAsked,
+      onAIResponse,
       onError,
     ]
   )
@@ -392,6 +446,18 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
     [sendMessage]
   )
 
+  // Ask a question about the presentation
+  const askQuestion = useCallback(
+    (slideId: string, questionText: string) => {
+      sendMessage({
+        type: 'ask_question',
+        slide_id: slideId,
+        question_text: questionText,
+      })
+    },
+    [sendMessage]
+  )
+
   // Send ping to keep connection alive
   const ping = useCallback(() => {
     sendMessage({ type: 'ping' })
@@ -422,6 +488,7 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
     disconnect,
     sendMessage,
     submitResponse,
+    askQuestion,
     ping,
     isConnected,
     sessionState,

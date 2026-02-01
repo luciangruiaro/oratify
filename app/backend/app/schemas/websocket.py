@@ -15,12 +15,16 @@ Message Types (Server -> Client):
 - session_resumed: Session status changed to active (from paused)
 - session_ended: Session status changed to ended
 - response_received: New response submitted (to speaker)
+- vote_update: Aggregated vote counts for multiple choice
+- question_asked: Audience member asked a question (to speaker)
+- ai_response: AI response to a question
 - error: Error message
 
 Message Types (Client -> Server):
 - join: Join session as audience
 - join_speaker: Join session as speaker
 - submit_response: Submit response to current slide
+- ask_question: Ask a question about the presentation
 - ping: Keep-alive ping
 """
 
@@ -46,6 +50,9 @@ class WSMessageType(str, Enum):
     SESSION_RESUMED = "session_resumed"
     SESSION_ENDED = "session_ended"
     RESPONSE_RECEIVED = "response_received"
+    VOTE_UPDATE = "vote_update"
+    QUESTION_ASKED = "question_asked"
+    AI_RESPONSE = "ai_response"
     ERROR = "error"
     PONG = "pong"
 
@@ -53,6 +60,7 @@ class WSMessageType(str, Enum):
     JOIN = "join"
     JOIN_SPEAKER = "join_speaker"
     SUBMIT_RESPONSE = "submit_response"
+    ASK_QUESTION = "ask_question"
     PING = "ping"
 
 
@@ -166,6 +174,39 @@ class ResponseReceivedMessage(WSMessage):
     created_at: str
 
 
+class VoteUpdateMessage(WSMessage):
+    """Sent when vote counts update for a multiple choice question."""
+
+    type: WSMessageType = WSMessageType.VOTE_UPDATE
+    slide_id: str
+    votes: dict[str, int]  # option_id -> count
+    total_votes: int
+
+
+class QuestionAskedMessage(WSMessage):
+    """Sent to speaker when audience member asks a question."""
+
+    type: WSMessageType = WSMessageType.QUESTION_ASKED
+    question_id: str
+    slide_id: str
+    participant_id: str | None = None
+    display_name: str | None = None
+    question_text: str
+    created_at: str
+
+
+class AIResponseMessage(WSMessage):
+    """Sent when AI responds to a question."""
+
+    type: WSMessageType = WSMessageType.AI_RESPONSE
+    question_id: str
+    slide_id: str
+    question_text: str
+    response_text: str
+    is_streaming: bool = False
+    is_complete: bool = True
+
+
 class ErrorMessage(WSMessage):
     """Error message."""
 
@@ -206,6 +247,14 @@ class SubmitResponseMessage(WSMessage):
     type: WSMessageType = WSMessageType.SUBMIT_RESPONSE
     slide_id: str
     content: dict[str, Any]
+
+
+class AskQuestionMessage(WSMessage):
+    """Ask a question about the presentation content."""
+
+    type: WSMessageType = WSMessageType.ASK_QUESTION
+    slide_id: str
+    question_text: str
 
 
 class PingMessage(WSMessage):

@@ -8,12 +8,12 @@
 |-------|--------|----------|-----------|-------|
 | Phase 1: Foundation | Done | 100% | 40 | 40 |
 | Phase 2: Core Domain | Done | 100% | 43 | 43 |
-| Phase 3: Live Features | In Progress | 55% | 45 | 82 |
+| Phase 3: Live Features | In Progress | 60% | 49 | 82 |
 | Phase 4: Intelligence | Not Started | 0% | 0 | 30 |
 | Phase 5: Management | Not Started | 0% | 0 | 27 |
 | Phase 6: Quality | Not Started | 0% | 0 | 44 |
 | Phase 7: Release | Not Started | 0% | 0 | 25 |
-| **Grand Total** | **In Progress** | **46%** | **128** | **281** |
+| **Grand Total** | **In Progress** | **47%** | **132** | **281** |
 
 ---
 
@@ -191,7 +191,7 @@
 | 9.10 | Implement WebSocket error handling | Done | 2 |
 | 9.11 | Build frontend WebSocket connection hook | Done | 4 |
 | 9.12 | Implement frontend reconnection with exponential backoff | Done | 3 |
-| 9.13 | Build connection status indicator component | Pending | 2 |
+| 9.13 | Build connection status indicator component | Done | 2 |
 | | **Epic 9 Total** | **Done** | **34** |
 
 ### Epic 10: WebSocket Events
@@ -202,14 +202,14 @@
 | 10.3 | Implement participant left event | Done | 2 |
 | 10.4 | Implement participant count update event | Done | 1 |
 | 10.5 | Implement response submitted event | Done | 2 |
-| 10.6 | Implement aggregated vote update event | Pending | 3 |
-| 10.7 | Implement question asked event | Pending | 2 |
-| 10.8 | Implement AI response event | Pending | 2 |
+| 10.6 | Implement aggregated vote update event | Done | 3 |
+| 10.7 | Implement question asked event | Done | 2 |
+| 10.8 | Implement AI response event | Done | 2 |
 | 10.9 | Implement session started event | Done | 1 |
 | 10.10 | Implement session ended event | Done | 1 |
 | 10.11 | Implement session paused/resumed event | Done | 1 |
 | 10.12 | Create frontend event handlers for all events | Done | 4 |
-| | **Epic 10 Total** | **In Progress** | **23** |
+| | **Epic 10 Total** | **Done** | **23** |
 
 ### Epic 11: Presenter View
 | ID | Story | Status | Estimate (h) |
@@ -483,6 +483,8 @@
 | 2026-01-31 | 7 | 7.1-7.12 | Epic 7: Session Management - Complete |
 | 2026-02-01 | 8 | 8.1-8.10 | Epic 8: Join Flow - Complete (JoinPage, JoinBySlugPage, NameEntryPage, WaitingScreen, EndedScreen, NotFoundScreen, QRCode component) |
 | 2026-02-01 | 9 | 9.1-9.12 | Epic 9: WebSocket Infrastructure - Complete (Connection manager, message schemas, WS endpoint, frontend hook) |
+| 2026-02-01 | 9 | 9.13 | ConnectionStatus indicator component |
+| 2026-02-01 | 10 | 10.6-10.8 | Vote aggregation, question asked, AI response events |
 
 ---
 
@@ -490,7 +492,6 @@
 
 | Epic | Story | Description |
 |------|-------|-------------|
-| 10 | 10.6-10.8 | WebSocket Events - remaining: vote aggregation, question asked, AI response |
 | 11 | - | Presenter View (Next)
 
 ---
@@ -523,3 +524,5 @@ _No blocked items._
 | 2026-02-01 | Added qrcode.react dependency for QR code generation |
 | 2026-02-01 | Frontend useWebSocket hook with auto-reconnection (3 attempts) and ping/pong keepalive |
 | 2026-02-01 | WebSocket endpoint at /ws/session/{join_code} supports both speaker and audience connections |
+| 2026-02-01 | Epic 9 complete - added ConnectionStatus indicator component |
+| 2026-02-01 | Epic 10 complete - vote aggregation broadcasts to all clients, question_asked goes to speaker only |
