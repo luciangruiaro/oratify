@@ -127,3 +127,20 @@ async def get_current_active_speaker(
 # Type aliases for cleaner endpoint signatures
 CurrentSpeaker = Annotated[Speaker, Depends(get_current_speaker)]
 ActiveSpeaker = Annotated[Speaker, Depends(get_current_active_speaker)]
+
+
+async def get_db_websocket():
+    """
+    Async generator for WebSocket database sessions.
+
+    Unlike the regular get_db which is a dependency, this is an async generator
+    that can be used in WebSocket handlers with 'async for'.
+
+    Usage:
+        async for db in get_db_websocket():
+            # use db session
+    """
+    from app.core.database import AsyncSessionLocal
+
+    async with AsyncSessionLocal() as session:
+        yield session

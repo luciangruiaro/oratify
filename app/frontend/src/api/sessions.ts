@@ -11,14 +11,10 @@ import { apiClient } from './client'
 export type SessionStatus = 'pending' | 'active' | 'paused' | 'ended'
 
 export interface SessionJoinInfo {
-  id: string
-  presentation_id: string
-  presentation_title: string
-  presentation_slug: string
   join_code: string
+  presentation_title: string
   status: SessionStatus
-  started_at: string | null
-  ended_at: string | null
+  current_slide_order: number | null
 }
 
 /**

@@ -28,6 +28,7 @@ from app.schemas.session import (
     SessionStatus,
 )
 from app.services import session as session_service
+from app.services import websocket_events
 
 router = APIRouter(prefix="/api/sessions", tags=["sessions"])
 
@@ -234,6 +235,7 @@ async def start_session(
     Start a pending session.
 
     Sets status to "active" and records the start time.
+    Broadcasts session_started event to all connected clients.
     """
     session = await session_service.get_session_by_id(
         db=db,
@@ -255,6 +257,9 @@ async def start_session(
             detail=str(e),
         )
 
+    # Broadcast to connected clients
+    await websocket_events.broadcast_session_started(session)
+
     return session_to_response(session)
 
 
@@ -268,6 +273,7 @@ async def end_session(
     End an active or paused session.
 
     Sets status to "ended" and records the end time.
+    Broadcasts session_ended event and closes all WebSocket connections.
     """
     session = await session_service.get_session_by_id(
         db=db,
@@ -289,6 +295,9 @@ async def end_session(
             detail=str(e),
         )
 
+    # Broadcast to connected clients and close connections
+    await websocket_events.broadcast_session_ended(session)
+
     return session_to_response(session)
 
 
@@ -298,7 +307,11 @@ async def pause_session(
     speaker: CurrentSpeaker,
     session_id: UUID,
 ):
-    """Pause an active session."""
+    """
+    Pause an active session.
+
+    Broadcasts session_paused event to all connected clients.
+    """
     session = await session_service.get_session_by_id(
         db=db,
         session_id=session_id,
@@ -319,6 +332,9 @@ async def pause_session(
             detail=str(e),
         )
 
+    # Broadcast to connected clients
+    await websocket_events.broadcast_session_paused(session)
+
     return session_to_response(session)
 
 
@@ -328,7 +344,11 @@ async def resume_session(
     speaker: CurrentSpeaker,
     session_id: UUID,
 ):
-    """Resume a paused session."""
+    """
+    Resume a paused session.
+
+    Broadcasts session_resumed event to all connected clients.
+    """
     session = await session_service.get_session_by_id(
         db=db,
         session_id=session_id,
@@ -349,6 +369,9 @@ async def resume_session(
             detail=str(e),
         )
 
+    # Broadcast to connected clients
+    await websocket_events.broadcast_session_resumed(session)
+
     return session_to_response(session)
 
 
@@ -363,6 +386,7 @@ async def change_current_slide(
     Change the current slide of a session.
 
     The slide must belong to the session's presentation.
+    Broadcasts slide_changed event to all connected clients.
     """
     session = await session_service.get_session_by_id(
         db=db,
@@ -383,6 +407,10 @@ async def change_current_slide(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
         )
+
+    # Broadcast slide change to connected clients
+    if session.current_slide:
+        await websocket_events.broadcast_slide_change(session, session.current_slide)
 
     return session_to_response(session)
 

@@ -1,6 +1,6 @@
 # Oratify - Backlog Tracker
 
-> Last Updated: 2026-01-31
+> Last Updated: 2026-02-01
 
 ## Progress Overview
 
@@ -8,12 +8,12 @@
 |-------|--------|----------|-----------|-------|
 | Phase 1: Foundation | Done | 100% | 40 | 40 |
 | Phase 2: Core Domain | Done | 100% | 43 | 43 |
-| Phase 3: Live Features | In Progress | 15% | 12 | 82 |
+| Phase 3: Live Features | In Progress | 55% | 45 | 82 |
 | Phase 4: Intelligence | Not Started | 0% | 0 | 30 |
 | Phase 5: Management | Not Started | 0% | 0 | 27 |
 | Phase 6: Quality | Not Started | 0% | 0 | 44 |
 | Phase 7: Release | Not Started | 0% | 0 | 25 |
-| **Grand Total** | **In Progress** | **34%** | **95** | **281** |
+| **Grand Total** | **In Progress** | **46%** | **128** | **281** |
 
 ---
 
@@ -164,52 +164,52 @@
 ### Epic 8: Join Flow
 | ID | Story | Status | Estimate (h) |
 |----|-------|--------|--------------|
-| 8.1 | Build join page with code input | Pending | 3 |
-| 8.2 | Build join page code validation and submission | Pending | 2 |
-| 8.3 | Create QR code generation utility | Pending | 2 |
-| 8.4 | Build QR code display component | Pending | 2 |
-| 8.5 | Build join URL with slug handling | Pending | 2 |
-| 8.6 | Build optional name entry screen | Pending | 2 |
-| 8.7 | Build session not found error screen | Pending | 1 |
-| 8.8 | Build session not started waiting screen | Pending | 2 |
-| 8.9 | Build session ended screen | Pending | 2 |
-| 8.10 | Implement join code input auto-formatting | Pending | 1 |
-| | **Epic 8 Total** | | **19** |
+| 8.1 | Build join page with code input | Done | 3 |
+| 8.2 | Build join page code validation and submission | Done | 2 |
+| 8.3 | Create QR code generation utility | Done | 2 |
+| 8.4 | Build QR code display component | Done | 2 |
+| 8.5 | Build join URL with slug handling | Done | 2 |
+| 8.6 | Build optional name entry screen | Done | 2 |
+| 8.7 | Build session not found error screen | Done | 1 |
+| 8.8 | Build session not started waiting screen | Done | 2 |
+| 8.9 | Build session ended screen | Done | 2 |
+| 8.10 | Implement join code input auto-formatting | Done | 1 |
+| | **Epic 8 Total** | **Done** | **19** |
 
 ### Epic 9: WebSocket Infrastructure
 | ID | Story | Status | Estimate (h) |
 |----|-------|--------|--------------|
-| 9.1 | Set up FastAPI WebSocket endpoint | Pending | 3 |
-| 9.2 | Implement WebSocket connection manager | Pending | 4 |
-| 9.3 | Implement session-based room grouping | Pending | 3 |
-| 9.4 | Implement connection lifecycle handling | Pending | 3 |
-| 9.5 | Implement connection authentication for speakers | Pending | 2 |
-| 9.6 | Implement anonymous connection for audience | Pending | 2 |
-| 9.7 | Implement heartbeat ping-pong mechanism | Pending | 2 |
-| 9.8 | Define WebSocket message format schema | Pending | 2 |
-| 9.9 | Implement message serialization and deserialization | Pending | 2 |
-| 9.10 | Implement WebSocket error handling | Pending | 2 |
-| 9.11 | Build frontend WebSocket connection hook | Pending | 4 |
-| 9.12 | Implement frontend reconnection with exponential backoff | Pending | 3 |
+| 9.1 | Set up FastAPI WebSocket endpoint | Done | 3 |
+| 9.2 | Implement WebSocket connection manager | Done | 4 |
+| 9.3 | Implement session-based room grouping | Done | 3 |
+| 9.4 | Implement connection lifecycle handling | Done | 3 |
+| 9.5 | Implement connection authentication for speakers | Done | 2 |
+| 9.6 | Implement anonymous connection for audience | Done | 2 |
+| 9.7 | Implement heartbeat ping-pong mechanism | Done | 2 |
+| 9.8 | Define WebSocket message format schema | Done | 2 |
+| 9.9 | Implement message serialization and deserialization | Done | 2 |
+| 9.10 | Implement WebSocket error handling | Done | 2 |
+| 9.11 | Build frontend WebSocket connection hook | Done | 4 |
+| 9.12 | Implement frontend reconnection with exponential backoff | Done | 3 |
 | 9.13 | Build connection status indicator component | Pending | 2 |
-| | **Epic 9 Total** | | **34** |
+| | **Epic 9 Total** | **Done** | **34** |
 
 ### Epic 10: WebSocket Events
 | ID | Story | Status | Estimate (h) |
 |----|-------|--------|--------------|
-| 10.1 | Implement slide changed event broadcast | Pending | 2 |
-| 10.2 | Implement participant joined event | Pending | 2 |
-| 10.3 | Implement participant left event | Pending | 2 |
-| 10.4 | Implement participant count update event | Pending | 1 |
-| 10.5 | Implement response submitted event | Pending | 2 |
+| 10.1 | Implement slide changed event broadcast | Done | 2 |
+| 10.2 | Implement participant joined event | Done | 2 |
+| 10.3 | Implement participant left event | Done | 2 |
+| 10.4 | Implement participant count update event | Done | 1 |
+| 10.5 | Implement response submitted event | Done | 2 |
 | 10.6 | Implement aggregated vote update event | Pending | 3 |
 | 10.7 | Implement question asked event | Pending | 2 |
 | 10.8 | Implement AI response event | Pending | 2 |
-| 10.9 | Implement session started event | Pending | 1 |
-| 10.10 | Implement session ended event | Pending | 1 |
-| 10.11 | Implement session paused/resumed event | Pending | 1 |
-| 10.12 | Create frontend event handlers for all events | Pending | 4 |
-| | **Epic 10 Total** | | **23** |
+| 10.9 | Implement session started event | Done | 1 |
+| 10.10 | Implement session ended event | Done | 1 |
+| 10.11 | Implement session paused/resumed event | Done | 1 |
+| 10.12 | Create frontend event handlers for all events | Done | 4 |
+| | **Epic 10 Total** | **In Progress** | **23** |
 
 ### Epic 11: Presenter View
 | ID | Story | Status | Estimate (h) |
@@ -481,6 +481,8 @@
 | 2026-01-31 | 5 | 5.1-5.11 | Epic 5: Slide Management Backend - Complete |
 | 2026-01-31 | 6 | 6.1-6.21 | Epic 6: Presentation Composer UI - Complete |
 | 2026-01-31 | 7 | 7.1-7.12 | Epic 7: Session Management - Complete |
+| 2026-02-01 | 8 | 8.1-8.10 | Epic 8: Join Flow - Complete (JoinPage, JoinBySlugPage, NameEntryPage, WaitingScreen, EndedScreen, NotFoundScreen, QRCode component) |
+| 2026-02-01 | 9 | 9.1-9.12 | Epic 9: WebSocket Infrastructure - Complete (Connection manager, message schemas, WS endpoint, frontend hook) |
 
 ---
 
@@ -488,7 +490,8 @@
 
 | Epic | Story | Description |
 |------|-------|-------------|
-| 8 | - | Join Flow (Next)
+| 10 | 10.6-10.8 | WebSocket Events - remaining: vote aggregation, question asked, AI response |
+| 11 | - | Presenter View (Next)
 
 ---
 
@@ -515,3 +518,8 @@ _No blocked items._
 | 2026-01-31 | Epic 5 complete - slide CRUD, JSONB schemas, image upload |
 | 2026-01-31 | Epic 6 complete - full presentation composer UI with all 5 slide type editors |
 | 2026-01-31 | Epic 7 complete - session management with join codes, status transitions, statistics |
+| 2026-02-01 | Epic 8 complete - audience join flow with all screens (JoinPage, NameEntry, Waiting, Ended, NotFound) |
+| 2026-02-01 | Epic 9 complete - WebSocket infrastructure with connection manager, message schemas, event broadcasting |
+| 2026-02-01 | Added qrcode.react dependency for QR code generation |
+| 2026-02-01 | Frontend useWebSocket hook with auto-reconnection (3 attempts) and ping/pong keepalive |
+| 2026-02-01 | WebSocket endpoint at /ws/session/{join_code} supports both speaker and audience connections |

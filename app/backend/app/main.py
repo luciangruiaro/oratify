@@ -20,7 +20,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
-from app.api import auth, presentations, sessions, slides, uploads
+from app.api import auth, presentations, sessions, slides, uploads, websocket
 from app.core.config import get_settings
 from app.core.database import close_db, engine
 
@@ -122,6 +122,7 @@ app.include_router(presentations.router)  # Prefix already set in router
 app.include_router(sessions.router)  # Prefix already set in router
 app.include_router(slides.router)  # Prefix already set in router
 app.include_router(uploads.router)  # Prefix already set in router
+app.include_router(websocket.router)  # WebSocket endpoint
 
 # Future routers:
 # app.include_router(responses.router)
