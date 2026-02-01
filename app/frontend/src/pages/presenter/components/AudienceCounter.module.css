@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.icon {
+  color: #3b82f6;
+}
+
+.count {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}

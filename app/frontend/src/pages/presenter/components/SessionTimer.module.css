@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.icon {
+  color: #64748b;
+}
+
+.time {
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  color: #f8fafc;
+}
+
+.time.paused {
+  color: #f59e0b;
+}
+
+.pausedLabel {
+  padding: 0.125rem 0.375rem;
+  background-color: rgba(245, 158, 11, 0.15);
+  border-radius: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: #f59e0b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

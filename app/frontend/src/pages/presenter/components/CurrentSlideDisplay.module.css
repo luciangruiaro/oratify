@@ -1,0 +1,233 @@
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.slideCounter {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  z-index: 10;
+}
+
+.slideType {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(59, 130, 246, 0.2);
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  color: #60a5fa;
+  text-transform: capitalize;
+  z-index: 10;
+}
+
+.slideContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: auto;
+}
+
+.empty {
+  text-align: center;
+  color: #64748b;
+}
+
+/* Content slide */
+.contentSlide {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+.text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+.text h1, .text h2, .text h3 {
+  color: #f8fafc;
+  margin-bottom: 0.75rem;
+}
+
+.text p {
+  margin-bottom: 1rem;
+}
+
+.text ul, .text ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Question slides */
+.questionSlide {
+  text-align: center;
+  max-width: 700px;
+}
+
+.questionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.questionText {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0 0 1rem;
+}
+
+.questionHint {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #334155;
+  border-radius: 0.5rem;
+}
+
+.optionLetter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #475569;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.optionText {
+  font-size: 1.125rem;
+  color: #e2e8f0;
+}
+
+/* Summary slide */
+.summarySlide {
+  text-align: center;
+  max-width: 700px;
+}
+
+.summaryTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 1.5rem;
+}
+
+.summaryText {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  text-align: left;
+}
+
+.summaryHint {
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Conclusion slide */
+.conclusionSlide {
+  text-align: center;
+  max-width: 700px;
+}
+
+.conclusionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 1.5rem;
+}
+
+.conclusionList {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.conclusionList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  font-size: 1.125rem;
+  color: #e2e8f0;
+}
+
+.conclusionList li::before {
+  content: '✓';
+  color: #22c55e;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.conclusionHint {
+  color: #64748b;
+  font-style: italic;
+}
+
+.thankYou {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+/* Unknown slide */
+.unknownSlide {
+  text-align: center;
+  color: #f87171;
+}

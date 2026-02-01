@@ -8,12 +8,12 @@
 |-------|--------|----------|-----------|-------|
 | Phase 1: Foundation | Done | 100% | 40 | 40 |
 | Phase 2: Core Domain | Done | 100% | 43 | 43 |
-| Phase 3: Live Features | In Progress | 60% | 49 | 82 |
+| Phase 3: Live Features | In Progress | 82% | 67 | 82 |
 | Phase 4: Intelligence | Not Started | 0% | 0 | 30 |
 | Phase 5: Management | Not Started | 0% | 0 | 27 |
 | Phase 6: Quality | Not Started | 0% | 0 | 44 |
 | Phase 7: Release | Not Started | 0% | 0 | 25 |
-| **Grand Total** | **In Progress** | **47%** | **132** | **281** |
+| **Grand Total** | **In Progress** | **53%** | **150** | **281** |
 
 ---
 
@@ -214,25 +214,25 @@
 ### Epic 11: Presenter View
 | ID | Story | Status | Estimate (h) |
 |----|-------|--------|--------------|
-| 11.1 | Build presenter view page layout | Pending | 4 |
-| 11.2 | Build current slide display component | Pending | 3 |
-| 11.3 | Build slide navigation controls | Pending | 2 |
-| 11.4 | Build slide thumbnail strip for quick navigation | Pending | 3 |
-| 11.5 | Build jump to slide modal | Pending | 2 |
-| 11.6 | Build session start button and flow | Pending | 2 |
-| 11.7 | Build session end button with confirmation | Pending | 2 |
-| 11.8 | Build session pause/resume toggle | Pending | 2 |
-| 11.9 | Build join code display panel | Pending | 2 |
-| 11.10 | Build QR code display for projection | Pending | 2 |
-| 11.11 | Build connected audience counter | Pending | 2 |
-| 11.12 | Build session timer display | Pending | 2 |
-| 11.13 | Build response counter for current slide | Pending | 2 |
-| 11.14 | Build real-time response feed | Pending | 4 |
-| 11.15 | Build response feed filtering options | Pending | 2 |
-| 11.16 | Build full-screen presentation mode | Pending | 3 |
-| 11.17 | Add keyboard shortcuts for presenter navigation | Pending | 2 |
-| 11.18 | Build presenter view header with presentation info | Pending | 2 |
-| | **Epic 11 Total** | | **43** |
+| 11.1 | Build presenter view page layout | Done | 4 |
+| 11.2 | Build current slide display component | Done | 3 |
+| 11.3 | Build slide navigation controls | Done | 2 |
+| 11.4 | Build slide thumbnail strip for quick navigation | Done | 3 |
+| 11.5 | Build jump to slide modal | Done | 2 |
+| 11.6 | Build session start button and flow | Done | 2 |
+| 11.7 | Build session end button with confirmation | Done | 2 |
+| 11.8 | Build session pause/resume toggle | Done | 2 |
+| 11.9 | Build join code display panel | Done | 2 |
+| 11.10 | Build QR code display for projection | Done | 2 |
+| 11.11 | Build connected audience counter | Done | 2 |
+| 11.12 | Build session timer display | Done | 2 |
+| 11.13 | Build response counter for current slide | Done | 2 |
+| 11.14 | Build real-time response feed | Done | 4 |
+| 11.15 | Build response feed filtering options | Done | 2 |
+| 11.16 | Build full-screen presentation mode | Done | 3 |
+| 11.17 | Add keyboard shortcuts for presenter navigation | Done | 2 |
+| 11.18 | Build presenter view header with presentation info | Done | 2 |
+| | **Epic 11 Total** | **Done** | **43** |
 
 ### Epic 12: Audience View
 | ID | Story | Status | Estimate (h) |
@@ -485,6 +485,7 @@
 | 2026-02-01 | 9 | 9.1-9.12 | Epic 9: WebSocket Infrastructure - Complete (Connection manager, message schemas, WS endpoint, frontend hook) |
 | 2026-02-01 | 9 | 9.13 | ConnectionStatus indicator component |
 | 2026-02-01 | 10 | 10.6-10.8 | Vote aggregation, question asked, AI response events |
+| 2026-02-01 | 11 | 11.1-11.18 | Epic 11: Presenter View - Complete (all 18 stories, 26 new tests) |
 
 ---
 
@@ -492,7 +493,7 @@
 
 | Epic | Story | Description |
 |------|-------|-------------|
-| 11 | - | Presenter View (Next)
+| 12 | - | Audience View (Next)
 
 ---
 
@@ -526,3 +527,6 @@ _No blocked items._
 | 2026-02-01 | WebSocket endpoint at /ws/session/{join_code} supports both speaker and audience connections |
 | 2026-02-01 | Epic 9 complete - added ConnectionStatus indicator component |
 | 2026-02-01 | Epic 10 complete - vote aggregation broadcasts to all clients, question_asked goes to speaker only |
+| 2026-02-01 | Epic 11 complete - full presenter view with slide navigation, session controls, response feed |
+| 2026-02-01 | Presenter keyboard shortcuts: arrows/space for navigation, G for jump, F for fullscreen, Esc to exit |
+| 2026-02-01 | Route: /sessions/:sessionId/present for presenter view |

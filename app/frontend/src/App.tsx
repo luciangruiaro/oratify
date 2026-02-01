@@ -29,6 +29,7 @@ import {
   NotFoundScreen,
   AudiencePage,
 } from '@/pages/audience'
+import { PresenterPage } from '@/pages/presenter'
 
 /**
  * App content with routing - must be inside Provider
@@ -93,6 +94,14 @@ function AppContent() {
             element={
               <ProtectedRoute>
                 <PresentationSettingsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/sessions/:sessionId/present"
+            element={
+              <ProtectedRoute>
+                <PresenterPage />
               </ProtectedRoute>
             }
           />

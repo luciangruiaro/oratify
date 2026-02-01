@@ -1,0 +1,197 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+.fullScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.mainContent {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.leftPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.slideArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #1e293b;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.rightPanel {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background-color: #1e293b;
+  border-radius: 0.5rem;
+}
+
+.responseSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #1e293b;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.responseHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #334155;
+}
+
+.responseHeader h3 {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.responseFilters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.responseFilters button {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  background-color: transparent;
+  border: 1px solid #475569;
+  border-radius: 0.25rem;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.responseFilters button:hover {
+  border-color: #64748b;
+  color: #f8fafc;
+}
+
+.responseFilters button.active {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #334155;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #0f172a;
+  color: #f8fafc;
+  text-align: center;
+  padding: 2rem;
+}
+
+.error h2 {
+  margin: 0 0 1rem;
+  color: #ef4444;
+}
+
+.error p {
+  margin: 0 0 1.5rem;
+  color: #94a3b8;
+}
+
+.error button {
+  padding: 0.75rem 1.5rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.error button:hover {
+  background-color: #2563eb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .mainContent {
+    flex-direction: column;
+  }
+
+  .rightPanel {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .statusBar {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .responseSection {
+    flex: 1 1 100%;
+    max-height: 300px;
+  }
+}
