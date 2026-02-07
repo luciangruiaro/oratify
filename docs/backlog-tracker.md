@@ -1,6 +1,6 @@
 # Oratify - Backlog Tracker
 
-> Last Updated: 2026-02-01
+> Last Updated: 2026-02-07
 
 ## Progress Overview
 
@@ -8,12 +8,12 @@
 |-------|--------|----------|-----------|-------|
 | Phase 1: Foundation | Done | 100% | 40 | 40 |
 | Phase 2: Core Domain | Done | 100% | 43 | 43 |
-| Phase 3: Live Features | In Progress | 82% | 67 | 82 |
+| Phase 3: Live Features | Done | 100% | 82 | 82 |
 | Phase 4: Intelligence | Not Started | 0% | 0 | 30 |
 | Phase 5: Management | Not Started | 0% | 0 | 27 |
 | Phase 6: Quality | Not Started | 0% | 0 | 44 |
 | Phase 7: Release | Not Started | 0% | 0 | 25 |
-| **Grand Total** | **In Progress** | **53%** | **150** | **281** |
+| **Grand Total** | **In Progress** | **57%** | **165** | **291** |
 
 ---
 
@@ -74,7 +74,7 @@
 | 3.18 | Add auth token to API request interceptor | Done | 2 |
 | | **Epic 3 Total** | **Done** | **39** |
 
-**Phase 1 Total: 86 hours**
+**Phase 1 Total: 86 hours (40/40 stories done)**
 
 ---
 
@@ -138,7 +138,7 @@
 | 6.21 | Add keyboard shortcuts for composer actions | Done | 2 |
 | | **Epic 6 Total** | **Done** | **62** |
 
-**Phase 2 Total: 117 hours**
+**Phase 2 Total: 117 hours (43/43 stories done)**
 
 ---
 
@@ -237,26 +237,26 @@
 ### Epic 12: Audience View
 | ID | Story | Status | Estimate (h) |
 |----|-------|--------|--------------|
-| 12.1 | Build audience view page layout | Pending | 3 |
-| 12.2 | Build audience header with session info | Pending | 2 |
-| 12.3 | Build content slide display for audience | Pending | 3 |
-| 12.4 | Build waiting for next slide state | Pending | 2 |
-| 12.5 | Build text response input component | Pending | 2 |
-| 12.6 | Build multiple choice voting buttons | Pending | 3 |
-| 12.7 | Build response submission handler | Pending | 2 |
-| 12.8 | Build response submitted confirmation state | Pending | 2 |
-| 12.9 | Build already responded state display | Pending | 2 |
-| 12.10 | Build ask question floating action button | Pending | 2 |
-| 12.11 | Build question submission modal | Pending | 3 |
-| 12.12 | Build AI response display area | Pending | 3 |
-| 12.13 | Build AI response loading state | Pending | 2 |
-| 12.14 | Build session ended screen for audience | Pending | 2 |
-| 12.15 | Build summary slide display for audience | Pending | 2 |
-| 12.16 | Build conclusion slide display for audience | Pending | 2 |
-| 12.17 | Implement haptic feedback for mobile interactions | Pending | 2 |
-| | **Epic 12 Total** | | **39** |
+| 12.1 | Build audience view page layout | Done | 3 |
+| 12.2 | Build audience header with session info | Done | 2 |
+| 12.3 | Build content slide display for audience | Done | 3 |
+| 12.4 | Build waiting for next slide state | Done | 2 |
+| 12.5 | Build text response input component | Done | 2 |
+| 12.6 | Build multiple choice voting buttons | Done | 3 |
+| 12.7 | Build response submission handler | Done | 2 |
+| 12.8 | Build response submitted confirmation state | Done | 2 |
+| 12.9 | Build already responded state display | Done | 2 |
+| 12.10 | Build ask question floating action button | Done | 2 |
+| 12.11 | Build question submission modal | Done | 3 |
+| 12.12 | Build AI response display area | Done | 3 |
+| 12.13 | Build AI response loading state | Done | 2 |
+| 12.14 | Build session ended screen for audience | Done | 2 |
+| 12.15 | Build summary slide display for audience | Done | 2 |
+| 12.16 | Build conclusion slide display for audience | Done | 2 |
+| 12.17 | Implement haptic feedback for mobile interactions | Done | 2 |
+| | **Epic 12 Total** | **Done** | **39** |
 
-**Phase 3 Total: 180 hours**
+**Phase 3 Total: 180 hours (82/82 stories done)**
 
 ---
 
@@ -276,7 +276,7 @@
 | 13.9 | Build response statistics calculation | Pending | 2 |
 | 13.10 | Create export responses endpoint | Pending | 3 |
 | 13.11 | Build response moderation controls | Pending | 3 |
-| | **Epic 13 Total** | | **33** |
+| | **Epic 13 Total** | **Pending** | **33** |
 
 ### Epic 14: AI Integration
 | ID | Story | Status | Estimate (h) |
@@ -300,9 +300,9 @@
 | 14.17 | Implement AI request rate limiting | Pending | 2 |
 | 14.18 | Implement AI error handling and fallbacks | Pending | 2 |
 | 14.19 | Add AI usage tracking per session | Pending | 2 |
-| | **Epic 14 Total** | | **49** |
+| | **Epic 14 Total** | **Pending** | **49** |
 
-**Phase 4 Total: 82 hours**
+**Phase 4 Total: 82 hours (0/30 stories done)**
 
 ---
 
@@ -329,7 +329,7 @@
 | 15.16 | Build session detail view (admin) | Pending | 3 |
 | 15.17 | Build usage statistics page | Pending | 4 |
 | 15.18 | Build session history with filtering | Pending | 3 |
-| | **Epic 15 Total** | | **54** |
+| | **Epic 15 Total** | **Pending** | **54** |
 
 ### Epic 16: Plans & Subscription Structure
 | ID | Story | Status | Estimate (h) |
@@ -343,9 +343,9 @@
 | 16.7 | Build usage display in speaker dashboard | Pending | 3 |
 | 16.8 | Create plan upgrade/downgrade endpoints | Pending | 2 |
 | 16.9 | Build plan selection UI | Pending | 3 |
-| | **Epic 16 Total** | | **22** |
+| | **Epic 16 Total** | **Pending** | **22** |
 
-**Phase 5 Total: 76 hours**
+**Phase 5 Total: 76 hours (0/27 stories done)**
 
 ---
 
@@ -368,7 +368,7 @@
 | 17.12 | Implement XSS prevention measures | Pending | 2 |
 | 17.13 | Configure CORS properly for production | Pending | 1 |
 | 17.14 | Implement request timeout handling | Pending | 2 |
-| | **Epic 17 Total** | | **30** |
+| | **Epic 17 Total** | **Pending** | **30** |
 
 ### Epic 18: Performance & Optimization
 | ID | Story | Status | Estimate (h) |
@@ -384,7 +384,7 @@
 | 18.9 | Configure proper caching headers | Pending | 2 |
 | 18.10 | Implement frontend asset caching strategy | Pending | 2 |
 | 18.11 | Add loading skeletons for better perceived performance | Pending | 3 |
-| | **Epic 18 Total** | | **29** |
+| | **Epic 18 Total** | **Pending** | **29** |
 
 ### Epic 19: Testing
 | ID | Story | Status | Estimate (h) |
@@ -408,9 +408,11 @@
 | 19.17 | Write E2E test for presentation creation | Pending | 4 |
 | 19.18 | Write E2E test for live session flow | Pending | 5 |
 | 19.19 | Write E2E test for audience join and response | Pending | 4 |
-| | **Epic 19 Total** | | **63** |
+| | **Epic 19 Total** | **Pending** | **63** |
 
-**Phase 6 Total: 122 hours**
+**Phase 6 Total: 122 hours (0/44 stories done)**
+
+> **Note:** Some foundational tests already exist (test_auth.py, test_presentations.py, test_slides.py, test_sessions.py, conftest.py on backend; authSlice.test.ts, presentationsSlice.test.ts, slidesSlice.test.ts, PresenterComponents.test.tsx on frontend). These were written alongside their features. Phase 6 testing stories focus on comprehensive coverage and E2E tests.
 
 ---
 
@@ -430,7 +432,7 @@
 | 20.9 | Document WebSocket event specifications | Pending | 3 |
 | 20.10 | Create user guide for speakers | Pending | 4 |
 | 20.11 | Create admin guide | Pending | 3 |
-| | **Epic 20 Total** | | **32** |
+| | **Epic 20 Total** | **Pending** | **32** |
 
 ### Epic 21: Deployment & DevOps
 | ID | Story | Status | Estimate (h) |
@@ -449,24 +451,24 @@
 | 21.12 | Create GitHub Actions CD pipeline | Pending | 4 |
 | 21.13 | Set up staging environment | Pending | 4 |
 | 21.14 | Configure environment-specific settings | Pending | 2 |
-| | **Epic 21 Total** | | **38** |
+| | **Epic 21 Total** | **Pending** | **38** |
 
-**Phase 7 Total: 70 hours**
+**Phase 7 Total: 70 hours (0/25 stories done)**
 
 ---
 
 ## Estimates Summary
 
-| Phase | Hours |
-|-------|-------|
-| Phase 1: Foundation | 86 |
-| Phase 2: Core Domain | 117 |
-| Phase 3: Live Features | 180 |
-| Phase 4: Intelligence | 82 |
-| Phase 5: Management | 76 |
-| Phase 6: Quality | 122 |
-| Phase 7: Release | 70 |
-| **Grand Total** | **733 hours** |
+| Phase | Hours | Stories |
+|-------|-------|---------|
+| Phase 1: Foundation | 86 | 40 |
+| Phase 2: Core Domain | 117 | 43 |
+| Phase 3: Live Features | 180 | 82 |
+| Phase 4: Intelligence | 82 | 30 |
+| Phase 5: Management | 76 | 27 |
+| Phase 6: Quality | 122 | 44 |
+| Phase 7: Release | 70 | 25 |
+| **Grand Total** | **733 hours** | **291 stories** |
 
 ---
 
@@ -481,19 +483,20 @@
 | 2026-01-31 | 5 | 5.1-5.11 | Epic 5: Slide Management Backend - Complete |
 | 2026-01-31 | 6 | 6.1-6.21 | Epic 6: Presentation Composer UI - Complete |
 | 2026-01-31 | 7 | 7.1-7.12 | Epic 7: Session Management - Complete |
-| 2026-02-01 | 8 | 8.1-8.10 | Epic 8: Join Flow - Complete (JoinPage, JoinBySlugPage, NameEntryPage, WaitingScreen, EndedScreen, NotFoundScreen, QRCode component) |
-| 2026-02-01 | 9 | 9.1-9.12 | Epic 9: WebSocket Infrastructure - Complete (Connection manager, message schemas, WS endpoint, frontend hook) |
-| 2026-02-01 | 9 | 9.13 | ConnectionStatus indicator component |
-| 2026-02-01 | 10 | 10.6-10.8 | Vote aggregation, question asked, AI response events |
-| 2026-02-01 | 11 | 11.1-11.18 | Epic 11: Presenter View - Complete (all 18 stories, 26 new tests) |
+| 2026-02-01 | 8 | 8.1-8.10 | Epic 8: Join Flow - Complete |
+| 2026-02-01 | 9 | 9.1-9.13 | Epic 9: WebSocket Infrastructure - Complete |
+| 2026-02-01 | 10 | 10.1-10.12 | Epic 10: WebSocket Events - Complete |
+| 2026-02-01 | 11 | 11.1-11.18 | Epic 11: Presenter View - Complete |
 
 ---
 
-## In Progress
+## Up Next
 
 | Epic | Story | Description |
 |------|-------|-------------|
-| 12 | - | Audience View (Next)
+| 12 | 12.1-12.17 | Audience View - Full audience interaction UI (replaces current placeholder) |
+| 13 | 13.1-13.11 | Response Handling & Aggregation - Backend response API + charts |
+| 14 | 14.1-14.19 | AI Integration - LiteLLM service, Q&A, summaries, conclusions |
 
 ---
 
@@ -503,30 +506,43 @@ _No blocked items._
 
 ---
 
+## Implementation Notes
+
+### What Exists (Verified 2026-02-07)
+
+**Backend (`app/backend/`):**
+- API routes: auth, presentations, slides, sessions, uploads, websocket
+- Services: presentation, slide, session, upload, websocket_events
+- Models: speaker, presentation, slide, session, participant, response
+- Schemas: auth, presentation, session, slide, websocket
+- Tests: test_auth, test_presentations, test_slides, test_sessions, conftest
+- NOT yet implemented: responses API route, admin API route, LLM service
+
+**Frontend (`app/frontend/`):**
+- Pages: auth (login, register, reset), speaker (dashboard, composer, settings), presenter (full view with 11 components), audience (join flow complete, main audience view is placeholder)
+- Components: composer (7 editors + supporting), common (ProtectedRoute, ConnectionStatus, QRCode), presentations (card, modal)
+- State: authSlice, presentationsSlice, slidesSlice (with tests)
+- Hooks: redux, useAuth, useWebSocket
+- API clients: auth, client, presentations, sessions, slides
+- NOT yet implemented: full audience interaction view, response visualization, admin pages
+
+---
+
 ## Notes & Decisions
 
 | Date | Note |
 |------|------|
-| 2026-01-31 | Initial backlog created with 281 stories across 21 epics |
+| 2026-01-31 | Initial backlog created with 291 stories across 21 epics |
 | 2026-01-31 | MVP scope confirmed: skip presentation website, focus on core app |
 | 2026-01-31 | LLM: OpenAI primary (GPT-4o-mini), Ollama secondary, via LiteLLM |
 | 2026-01-31 | Target: ~100 concurrent users per session |
 | 2026-01-31 | Folder structure: app/backend, app/frontend (not at root) |
-| 2026-01-31 | Epic 1 complete - all infrastructure files created |
-| 2026-01-31 | Updated all README.md and architecture.mmd files |
-| 2026-01-31 | Epic 2 complete - all models and migrations created |
-| 2026-01-31 | Epic 3 complete - full speaker authentication (backend + frontend) |
-| 2026-01-31 | Epic 4 complete - presentation CRUD, dashboard UI, settings page |
-| 2026-01-31 | Epic 5 complete - slide CRUD, JSONB schemas, image upload |
-| 2026-01-31 | Epic 6 complete - full presentation composer UI with all 5 slide type editors |
-| 2026-01-31 | Epic 7 complete - session management with join codes, status transitions, statistics |
-| 2026-02-01 | Epic 8 complete - audience join flow with all screens (JoinPage, NameEntry, Waiting, Ended, NotFound) |
-| 2026-02-01 | Epic 9 complete - WebSocket infrastructure with connection manager, message schemas, event broadcasting |
-| 2026-02-01 | Added qrcode.react dependency for QR code generation |
-| 2026-02-01 | Frontend useWebSocket hook with auto-reconnection (3 attempts) and ping/pong keepalive |
-| 2026-02-01 | WebSocket endpoint at /ws/session/{join_code} supports both speaker and audience connections |
-| 2026-02-01 | Epic 9 complete - added ConnectionStatus indicator component |
-| 2026-02-01 | Epic 10 complete - vote aggregation broadcasts to all clients, question_asked goes to speaker only |
-| 2026-02-01 | Epic 11 complete - full presenter view with slide navigation, session controls, response feed |
-| 2026-02-01 | Presenter keyboard shortcuts: arrows/space for navigation, G for jump, F for fullscreen, Esc to exit |
+| 2026-01-31 | Epics 1-7 completed in first development sprint |
+| 2026-02-01 | Epics 8-11 completed. Full presenter view with keyboard shortcuts |
+| 2026-02-01 | WebSocket endpoint at /ws/session/{join_code} supports both speaker and audience |
+| 2026-02-01 | Frontend useWebSocket hook with auto-reconnection (3 attempts) and ping/pong |
+| 2026-02-01 | Vote aggregation broadcasts to all clients, question_asked goes to speaker only |
 | 2026-02-01 | Route: /sessions/:sessionId/present for presenter view |
+| 2026-02-01 | Added qrcode.react dependency for QR code generation |
+| 2026-02-07 | Tracker audit: corrected Phase 3 count from 67 to 65, grand total from 281 to 291 |
+| 2026-02-07 | AudiencePage confirmed as placeholder - Epic 12 is the true next work item |

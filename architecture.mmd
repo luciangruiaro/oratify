@@ -2,41 +2,43 @@
 
 flowchart TB
     subgraph Clients["Client Applications"]
-        AudienceWeb["Audience View\n(Mobile PWA)"]
-        PresenterWeb["Presenter View\n(Desktop)"]
-        ComposerWeb["Composer\n(Desktop)"]
-        AdminWeb["Admin Dashboard\n(Desktop)"]
+        AudienceWeb["Audience View\n(Mobile PWA)\n✅ Done"]
+        PresenterWeb["Presenter View\n(Desktop)\n✅ Done"]
+        ComposerWeb["Composer\n(Desktop)\n✅ Done"]
+        AdminWeb["Admin Dashboard\n(Desktop)\n🔲 Not Started"]
     end
 
-    subgraph Frontend["Frontend Layer - React + Vite"]
-        Router["React Router v6"]
-        Redux["Redux Toolkit\nState Management"]
-        WSClient["WebSocket Client"]
-        APIClient["REST API Client\nAxios"]
+    subgraph Frontend["Frontend Layer - React + Vite ✅"]
+        Router["React Router v6\n✅ All routes configured"]
+        Redux["Redux Toolkit\nauthSlice, presentationsSlice,\nslidesSlice\n✅ Done"]
+        WSClient["WebSocket Client\nuseWebSocket hook\n✅ Done"]
+        APIClient["REST API Client\nAxios + interceptors\n✅ Done"]
     end
 
-    subgraph Backend["Backend Layer - FastAPI + Python"]
-        RestAPI["REST API\nEndpoints"]
-        WSServer["WebSocket\nManager"]
-        AuthService["Auth Service\nJWT"]
-        SessionMgr["Session\nManager"]
-        LLMService["LLM Service\nLiteLLM"]
+    subgraph Backend["Backend Layer - FastAPI + Python ✅"]
+        RestAPI["REST API Endpoints\nauth, presentations, slides,\nsessions, uploads\n✅ Done"]
+        WSServer["WebSocket Manager\nConnection manager +\nEvent broadcasting\n✅ Done"]
+        AuthService["Auth Service\nJWT + bcrypt\n✅ Done"]
+        SessionMgr["Session Manager\nJoin codes, state machine\n✅ Done"]
+        ResponseAPI["Response API\n🔲 Not Started"]
+        LLMService["LLM Service\nLiteLLM\n🔲 Not Started"]
+        AdminAPI["Admin API\n🔲 Not Started"]
     end
 
-    subgraph Data["Data Layer"]
-        Postgres[(PostgreSQL 15\nDatabase)]
-        Cache["In-Memory Cache\nPython Dict"]
+    subgraph Data["Data Layer ✅"]
+        Postgres[(PostgreSQL 15\nAll 6 models\n+ Alembic migrations\n✅ Done)]
+        Uploads["File Storage\n/uploads/images/\n✅ Done"]
     end
 
-    subgraph External["External Services"]
-        OpenAI["OpenAI API\nGPT-4o-mini"]
-        Ollama["Ollama\nLocal LLM"]
+    subgraph External["External Services 🔲"]
+        OpenAI["OpenAI API\nGPT-4o-mini\n🔲 Not Connected"]
+        Ollama["Ollama\nLocal LLM\n🔲 Not Connected"]
     end
 
     AudienceWeb --> Router
     PresenterWeb --> Router
     ComposerWeb --> Router
-    AdminWeb --> Router
+    AdminWeb -.->|Not implemented| Router
 
     Router --> Redux
     Redux --> APIClient
@@ -48,11 +50,20 @@ flowchart TB
     RestAPI --> AuthService
     RestAPI --> SessionMgr
     WSServer --> SessionMgr
-    SessionMgr --> LLMService
+    ResponseAPI -.->|Planned| LLMService
 
     RestAPI --> Postgres
-    SessionMgr --> Cache
-    WSServer --> Cache
+    RestAPI --> Uploads
+    SessionMgr --> Postgres
+    WSServer --> Postgres
 
-    LLMService --> OpenAI
-    LLMService --> Ollama
+    LLMService -.->|Planned| OpenAI
+    LLMService -.->|Planned| Ollama
+
+    style AudienceWeb fill:#0de7e7,stroke:#2c2d2f,color:#2c2d2f
+    style AdminWeb fill:#2c2d2f,stroke:#666
+    style ResponseAPI fill:#2c2d2f,stroke:#666
+    style LLMService fill:#2c2d2f,stroke:#666
+    style AdminAPI fill:#2c2d2f,stroke:#666
+    style OpenAI fill:#2c2d2f,stroke:#666
+    style Ollama fill:#2c2d2f,stroke:#666

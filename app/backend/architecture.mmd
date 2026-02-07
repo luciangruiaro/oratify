@@ -2,60 +2,82 @@
 
 flowchart TB
     subgraph Entry["Entry Point"]
-        Main["main.py\nFastAPI App\nLifespan Events"]
+        Main["main.py\nFastAPI App\nLifespan Events\nCORS Middleware"]
     end
 
     subgraph API["API Layer - app/api/"]
-        AuthRoutes["auth.py"]
-        PresentationRoutes["presentations.py"]
-        SlideRoutes["slides.py"]
-        SessionRoutes["sessions.py"]
-        ResponseRoutes["responses.py"]
-        AdminRoutes["admin.py"]
-        WSEndpoint["websocket.py"]
+        AuthRoutes["auth.py ✅\nregister, login, refresh,\nme, password-reset"]
+        PresentationRoutes["presentations.py ✅\nCRUD, duplicate, slug"]
+        SlideRoutes["slides.py ✅\nCRUD, reorder, validation"]
+        SessionRoutes["sessions.py ✅\nstart, end, pause,\ncurrent-slide, stats"]
+        UploadRoutes["uploads.py ✅\nimage upload + serving"]
+        WSEndpoint["websocket.py ✅\n/ws/session/join_code"]
+        Deps["deps.py ✅\nget_current_speaker\nget_db"]
+        ResponseRoutes["responses.py 🔲\nNot yet created"]
+        AdminRoutes["admin.py 🔲\nNot yet created"]
     end
 
     subgraph Core["Core Layer - app/core/"]
-        Config["config.py\nPydantic Settings"]
-        Security["security.py\nJWT + Bcrypt"]
-        Database["database.py\nAsyncSession\nConnection Pool"]
+        Config["config.py ✅\nPydantic Settings"]
+        Security["security.py ✅\nJWT + bcrypt\naccess & refresh tokens"]
+        Database["database.py ✅\nAsyncSession\nConnection Pool"]
+        WSCore["websocket.py ✅\nConnectionManager\nSession rooms"]
     end
 
     subgraph Models["Models - app/models/"]
-        BaseModel["base.py\nTimestampMixin\nUUIDMixin"]
-        SpeakerModel["speaker.py"]
-        PresentationModel["presentation.py"]
-        SlideModel["slide.py\nJSONB content"]
-        SessionModel["session.py"]
-        ParticipantModel["participant.py"]
-        ResponseModel["response.py"]
+        BaseModel["base.py ✅\nTimestampMixin\nUUIDMixin"]
+        SpeakerModel["speaker.py ✅"]
+        PresentationModel["presentation.py ✅"]
+        SlideModel["slide.py ✅\nJSONB content"]
+        SessionModel["session.py ✅"]
+        ParticipantModel["participant.py ✅"]
+        ResponseModel["response.py ✅"]
+    end
+
+    subgraph Schemas["Schemas - app/schemas/"]
+        AuthSchemas["auth.py ✅"]
+        PresentationSchemas["presentation.py ✅"]
+        SessionSchemas["session.py ✅"]
+        SlideSchemas["slide.py ✅\n5 slide type schemas"]
+        WSSchemas["websocket.py ✅\nAll event messages"]
     end
 
     subgraph Services["Services - app/services/"]
-        AuthService["auth.py"]
-        PresentationService["presentation.py"]
-        SessionService["session.py"]
-        LLMService["llm.py"]
-        WSManager["websocket.py"]
+        PresentationService["presentation.py ✅"]
+        SlideService["slide.py ✅"]
+        SessionService["session.py ✅"]
+        UploadService["upload.py ✅"]
+        WSEvents["websocket_events.py ✅\nslide_changed, session_started,\nsession_ended, vote_update,\nquestion_asked, ai_response"]
+        LLMService["llm.py 🔲\nNot yet created"]
+    end
+
+    subgraph Tests["Tests - tests/"]
+        TestAuth["test_auth.py ✅"]
+        TestPresentations["test_presentations.py ✅"]
+        TestSlides["test_slides.py ✅"]
+        TestSessions["test_sessions.py ✅"]
+        Conftest["conftest.py ✅"]
     end
 
     subgraph Migrations["Alembic - alembic/"]
-        AlembicEnv["env.py\nAsync Support"]
-        Versions["versions/\n001_initial"]
+        AlembicEnv["env.py ✅\nAsync Support"]
+        Versions["versions/\ninitial_schema ✅"]
     end
 
     subgraph External["External"]
         Postgres[(PostgreSQL 15)]
-        OpenAI["OpenAI API"]
-        Ollama["Ollama"]
     end
 
     Main --> API
     Main --> Core
+    API --> Schemas
     API --> Services
+    API --> Deps
     Services --> Models
     Models --> Database
     Database --> Postgres
-    LLMService --> OpenAI
-    LLMService --> Ollama
     Migrations --> Models
+
+    style ResponseRoutes fill:#2c2d2f,stroke:#666
+    style AdminRoutes fill:#2c2d2f,stroke:#666
+    style LLMService fill:#2c2d2f,stroke:#666

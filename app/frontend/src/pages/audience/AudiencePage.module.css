@@ -1,96 +1,28 @@
 /**
- * Styles for AudiencePage component (placeholder).
+ * Styles for AudiencePage (interactive audience view).
+ * Mobile-first, dark theme.
  */
 
 .container {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-lg);
   background-color: var(--color-dark);
+  color: var(--color-light);
 }
 
-.card {
-  width: 100%;
-  max-width: 500px;
-  background-color: var(--color-charcoal);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  text-align: center;
-}
-
-.successIcon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto var(--spacing-lg);
-  background-color: rgba(13, 231, 231, 0.1);
-  border-radius: 50%;
+.main {
+  flex: 1;
   display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.slideArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--color-cyan);
-}
-
-.title {
-  font-size: 1.75rem;
-  color: var(--color-cyan);
-  margin-bottom: var(--spacing-sm);
-}
-
-.presentationTitle {
-  color: var(--color-light);
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: var(--spacing-sm);
-}
-
-.displayName {
-  color: var(--color-light);
-  opacity: 0.7;
-  font-size: 0.9rem;
-  margin-bottom: var(--spacing-xl);
-}
-
-.displayName strong {
-  color: var(--color-cyan);
-  opacity: 1;
-}
-
-.placeholder {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 2px dashed rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-xl);
-  margin-bottom: var(--spacing-xl);
-}
-
-.placeholder p {
-  color: var(--color-light);
-  opacity: 0.6;
-  margin: 0;
-}
-
-.hint {
-  font-size: 0.85rem;
-  margin-top: var(--spacing-sm) !important;
-}
-
-.leaveButton {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background-color: transparent;
-  color: var(--color-light);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-md);
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition:
-    border-color 0.2s,
-    color 0.2s;
-}
-
-.leaveButton:hover {
-  border-color: var(--color-red);
-  color: var(--color-red);
+  min-height: 0;
 }

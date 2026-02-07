@@ -4,57 +4,100 @@ flowchart TB
     subgraph Entry["Entry Point"]
         Index["index.html"]
         Main["main.tsx\nRedux Provider"]
-        App["App.tsx\nRouter"]
+        App["App.tsx\nBrowserRouter"]
     end
 
-    subgraph Routing["React Router"]
-        PublicRoutes["Public Routes\n/join /login /register"]
-        SpeakerRoutes["Speaker Routes\n/dashboard /presentations"]
-        AudienceRoutes["Audience Routes\n/session"]
-        AdminRoutes["Admin Routes\n/admin"]
+    subgraph Routing["React Router v6 ✅"]
+        PublicRoutes["Public Routes ✅\n/ /login /register\n/reset-password"]
+        AudienceRoutes["Audience Routes ✅\n/join /join/:code\n/s/:slug /join/audience"]
+        SpeakerRoutes["Speaker Routes ✅\n/dashboard\n/presentations/:id/edit\n/presentations/:id/settings"]
+        PresenterRoutes["Presenter Routes ✅\n/sessions/:sessionId/present"]
+        AdminRoutes["Admin Routes 🔲\n/admin/*"]
     end
 
     subgraph Pages["Pages - src/pages/"]
-        JoinPage["JoinPage"]
-        LoginPage["LoginPage"]
-        RegisterPage["RegisterPage"]
-        DashboardPage["DashboardPage"]
-        ComposerPage["ComposerPage"]
-        PresenterPage["PresenterPage"]
-        AudienceViewPage["AudienceViewPage"]
-        AdminDashboard["AdminDashboard"]
+        subgraph AuthPages["auth/ ✅"]
+            LoginPage["LoginPage"]
+            RegisterPage["RegisterPage"]
+            ResetPasswordPage["ResetPasswordPage"]
+        end
+        subgraph SpeakerPages["speaker/ ✅"]
+            DashboardPage["DashboardPage"]
+            ComposerPage["ComposerPage"]
+            SettingsPage["PresentationSettingsPage"]
+        end
+        subgraph PresenterPages["presenter/ ✅"]
+            PresenterPage["PresenterPage\n+ 11 sub-components"]
+        end
+        subgraph AudiencePages["audience/"]
+            JoinPage["JoinPage ✅"]
+            JoinBySlugPage["JoinBySlugPage ✅"]
+            NameEntryPage["NameEntryPage ✅"]
+            WaitingScreen["WaitingScreen ✅"]
+            EndedScreen["EndedScreen ✅"]
+            NotFoundScreen["NotFoundScreen ✅"]
+            AudiencePage["AudiencePage ✅\n+ 13 sub-components"]
+        end
+        AdminPages["admin/ 🔲\nNot yet created"]
     end
 
-    subgraph State["Redux Store - src/store/"]
-        AuthSlice["authSlice"]
-        PresentationsSlice["presentationsSlice"]
-        SlidesSlice["slidesSlice"]
-        SessionSlice["sessionSlice"]
-        UISlice["uiSlice"]
+    subgraph Components["Components - src/components/"]
+        subgraph Common["common/ ✅"]
+            ProtectedRoute["ProtectedRoute"]
+            ConnectionStatus["ConnectionStatus"]
+            QRCode["QRCode"]
+        end
+        subgraph Composer["composer/ ✅"]
+            SlideEditor["SlideEditor"]
+            SlideThumbnail["SlideThumbnail"]
+            SlidePreview["SlidePreview"]
+            AddSlideDropdown["AddSlideDropdown"]
+            PropertiesPanel["PropertiesPanel"]
+            SaveStatus["SaveStatusIndicator"]
+            Editors["editors/\n5 slide type editors"]
+        end
+        subgraph Presentations["presentations/ ✅"]
+            PresentationCard["PresentationCard"]
+            CreateModal["CreatePresentationModal"]
+        end
     end
 
-    subgraph Services["API Layer - src/api/"]
-        Client["client.ts\nAxios Instance"]
-        WSClient["websocket.ts\nWebSocket Client"]
+    subgraph State["Redux Store - src/store/ ✅"]
+        AuthSlice["authSlice ✅\n+ tests"]
+        PresentationsSlice["presentationsSlice ✅\n+ tests"]
+        SlidesSlice["slidesSlice ✅\n+ tests"]
+    end
+
+    subgraph Hooks["Hooks - src/hooks/ ✅"]
+        ReduxHooks["redux.ts\nuseAppDispatch\nuseAppSelector"]
+        UseAuth["useAuth.ts"]
+        UseWebSocket["useWebSocket.ts\nAuto-reconnect\nPing/pong"]
+    end
+
+    subgraph APILayer["API Layer - src/api/ ✅"]
+        Client["client.ts\nAxios + interceptors\nToken refresh"]
+        AuthAPI["auth.ts"]
+        PresentationsAPI["presentations.ts"]
+        SessionsAPI["sessions.ts"]
+        SlidesAPI["slides.ts"]
     end
 
     subgraph External["External"]
-        Backend["Backend API"]
-        WebSocket["WebSocket Server"]
+        Backend["Backend API\nhttp://localhost:8000"]
+        WebSocket["WebSocket Server\nws://localhost:8000"]
     end
 
-    Index --> Main
-    Main --> App
+    Index --> Main --> App
     App --> Routing
-    Routing --> PublicRoutes
-    Routing --> SpeakerRoutes
-    Routing --> AudienceRoutes
-    Routing --> AdminRoutes
-    PublicRoutes --> Pages
-    SpeakerRoutes --> Pages
-    AudienceRoutes --> Pages
-    AdminRoutes --> Pages
+    Routing --> Pages
+    Pages --> Components
     Pages --> State
-    State --> Services
+    Pages --> Hooks
+    State --> APILayer
+    Hooks --> APILayer
     Client -->|HTTP| Backend
-    WSClient <-->|WS| WebSocket
+    UseWebSocket <-->|WS| WebSocket
+
+    style AudiencePage fill:#0de7e7,stroke:#2c2d2f,color:#2c2d2f
+    style AdminPages fill:#2c2d2f,stroke:#666
+    style AdminRoutes fill:#2c2d2f,stroke:#666
